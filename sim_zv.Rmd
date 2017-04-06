@@ -1,7 +1,11 @@
 ---
 title: "Simulation von Zufallszahlen"
-author: "Bernhard Preisler (734631) & Hendrik Pfaff (725837)"
-date: 06.04.2017
+subtitle: "Vorlesung: Computerintensive Methoden SS 2017"
+author: 
+- "Bernhard Preisler (734631)"
+- "[Hendrik Pfaff](http://hendrik-pfaff.de) (725837)"
+date: "`r format(Sys.time(), '%d.%m.%Y')`"
+tags: [Vorlesung, Computational Statistics, Zufallszahlen, Zufallsvariablen, Simulation]
 output:
   pdf_document:
     toc: true
@@ -10,8 +14,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-##TEST
-## R Markdown
+
+# Was sind Zufallszahlen?
+
+# R Markdown
  
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -21,7 +27,7 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
-## Including Plots
+# Including Plots
 
 You can also embed plots, for example:
 
@@ -36,5 +42,5 @@ x
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-## Quellen
+# Quellen
 Hier kommen Quellen.
