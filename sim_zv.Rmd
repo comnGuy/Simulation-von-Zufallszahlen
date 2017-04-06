@@ -1,6 +1,6 @@
 ---
 title: "Simulation von Zufallszahlen"
-author: "Bernhard Preisler () & Hendrik Pfaff (725837)"
+author: "Bernhard Preisler (734631) & Hendrik Pfaff (725837)"
 date: 06.04.2017
 output:
   pdf_document:
