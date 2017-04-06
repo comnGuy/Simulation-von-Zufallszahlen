@@ -1,5 +1,5 @@
 ---
-title: "sim_zv"
+title: "Simulation von Zufallszahlen"
 output: pdf_document
 ---
 
