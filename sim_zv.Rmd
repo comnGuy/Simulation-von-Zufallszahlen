@@ -14,9 +14,18 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+\newpage
+# Motiviation
+blablabla irgedwelche Motivationen blablabla
 
-# Was sind Zufallszahlen?
-# Chris ist <3
+# Definitionen
+Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
+
+## Zufallsvariablen \& Zufallszahlen
+Hier könnten wir den Unterschied zwischen ZV und ZZ erklären
+
+## Pseudozufall
+Pseudozufall ...
 
 # R Markdown
  
