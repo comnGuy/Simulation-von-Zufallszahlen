@@ -11,12 +11,10 @@ output:
     toc: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 \newpage
 # Motiviation
-blablabla irgedwelche Motivationen blablabla
+- Zufallszahlen spielen heutzutage eine wichtige Rolle in Wissenschaft, Technik und Industrie 
+- Die Erzeugung von Zufälligkeiten in einem Computer (aka: deterministischer Automat) stellt eine besondere Herausforderung dar, da jede Operation durch die Vorherige definiert wird und daher (theoretisch) berechenbar ist.
 
 # Definitionen
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
@@ -24,33 +22,26 @@ Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeit
 ## Zufallsvariablen \& Zufallszahlen
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
 
+## Nichtdeterministische Zufallsgeneratoren
+- Hardwarekomponente, die auf physikalische Prozesse zurückgreift um Zahlen zu generieren
+- Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
+- CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
+- Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
+- Spannungsschwankungen an einer Z-Diode.
+- Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten
+
+## Deterministische Zufallsgeneratoren
+- Nur die Erzeugung von Pseudozufallszahlen möglich
+
 ## Pseudozufall
 Pseudozufall ...
 
-# R Markdown
- 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Güte des Zufallszahlengenerators
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-# Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-```{r}
-x<-5
-x
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 # Quellen
 Hier kommen Quellen.
+
+
+
+
