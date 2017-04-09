@@ -22,16 +22,20 @@ Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeit
 ## Zufallsvariablen \& Zufallszahlen
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
 
-## Nichtdeterministische Zufallsgeneratoren
-- Hardwarekomponente, die auf physikalische Prozesse zurückgreift um Zahlen zu generieren
-- Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
-- CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
-- Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
-- Spannungsschwankungen an einer Z-Diode.
-- Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten
+## Nichtdeterministische \& deterministische Zufallsgeneratoren
+Der Ausgang einer Funktion verändert sich bei einer gleichbleibenden Eingabe nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nur schwer realisieren. Eine Möglichkeit dieses Problem zu lösen sind die Außeneinwirkungen, die die Möglichkeit bieten Funktionen mit dem gleichen Eingabewerten zu unterschiedlichen Ergebnissen zu führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministische Zufallsgenerator} genannt.
 
-## Deterministische Zufallsgeneratoren
-- Nur die Erzeugung von Pseudozufallszahlen möglich
+* Hardwarekomponente, die auf physikalische Prozesse zurückgreift um Zahlen zu generieren
+* Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
+* CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
+* Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
+* Spannungsschwankungen an einer Z-Diode.
+* Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten
+
+Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird.
+
+* Nur die Erzeugung von Pseudozufallszahlen möglich
+
 
 ## Pseudozufall
 Pseudozufall ...
