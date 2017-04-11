@@ -65,6 +65,20 @@ Weitere Qualitätseigenschaften sind die folgende.
 # Methoden zur Simulation von (Pseudo)Zufallszahlen
 
 # Zufallszahlen in R
+* R's random number generator.
+```{r}
+?RNG
+```
+* Verschiedene Methoden zur Auswahl
+    + Wichmann-Hill
+    + Marsaglia-Multicarry
+    + Super-Duper
+    + Marsenne-Twister
+    + Knuth-TAOCP-2002
+    + Knuth-TAOCP
+    + L'Ecuyer-CMRG
+    + Eigene
+  
 
 # Quellen
 Hier kommen Quellen.
