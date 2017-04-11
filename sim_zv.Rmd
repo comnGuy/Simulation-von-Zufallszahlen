@@ -52,7 +52,15 @@ Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch 
 Pseudozufall ...
 
 ## Güte eines Zufallszahlengenerators
-Laut James E. Gentle [1] existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. #TODO 
+[1] Laut James E. Gentle [1] existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. %TODO%
+Weitere Qualitätseigenschaften sind die folgende.
+
+
+* Effizient
+    + tes
+* Reproduzierbarkeit
+* Portabiltät
+* %TODO%
 
 # Methoden zur Simulation von (Pseudo)Zufallszahlen
 
