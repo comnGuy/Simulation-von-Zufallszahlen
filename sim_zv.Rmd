@@ -57,7 +57,7 @@ Weitere Qualitätseigenschaften sind die folgende.
 
 
 * Effizient
-    + tes
+    * Der Algorithmus des Zufallsgenerators muss schnell ausführbar sein und möglichst wenig Arbeitsspeicher verwenden.
 * Reproduzierbarkeit
 * Portabiltät
 * %TODO%
