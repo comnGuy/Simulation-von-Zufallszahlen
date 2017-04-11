@@ -30,8 +30,8 @@ Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte mes
 * Radioaktiver Zerfall [2]
 * Wärmerauschen [1]
 * zufällige quantenmechanische Vorgänge [2]
-\newline
 * Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist) [2]
+\newline
 * CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
 * Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
 * Spannungsschwankungen an einer Z-Diode.
@@ -49,18 +49,29 @@ Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch 
 
 
 ## Güte eines Zufallszahlengenerators
-[1] Laut James E. Gentle [1] existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. %TODO%
-Weitere Qualitätseigenschaften sind die folgende.
+[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Sturkur $(a,b,c,d,e)$. %TODO% Wobei 
 
+* $a$ ist ein endlich Set von Zuständen, 
+* $b$ die Wahrscheinlichkeitverteilung,
+* $c$ Initialisierter Zustand (Seed) $s_0$,
+* $f : a -> a$ ist die Transitionsfunction, %TODO%
+* $d$ Ausgabeplatz und
+* $f : a -> d$ Aufgabefunktion, wobei $d = (0,1)$,
+
+wiederspiegelt.
+
+[1] Laut James E. Gentle existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. Weitere Qualitätseigenschaften sind die folgende.
 
 * Effizient
-    * Der Algorithmus des Zufallsgenerators muss schnell ausführbar sein und möglichst wenig Arbeitsspeicher verwenden.
+    * Der Zufallsgenerator muss schnell ausführbar sein und möglichst wenig Arbeitsspeicher verwenden.
 * Reproduzierbarkeit
-    * Der Algorithmus des Zufallsgenerators muss die Möglichkeit bieten die selbe Reihenfolge der Zufallszahlen zu reproduzieren.
+    * Der Zufallsgenerator muss die Möglichkeit bieten die selbe Reihenfolge der Zufallszahlen zu reproduzieren.
 * Portabiltät
-    * Der Algorithmus des Zufallsgenerators muss auf den unterschiedlichsten Plattformen auf die selbe Art und Weise arbeiten
-* jump-ahead
-    * %TODO%
+    * Der Zufallsgenerator muss auf den unterschiedlichsten Plattformen auf die selbe Art und Weise arbeiten
+* jump-ahead Methode
+    * Es wäre wünschenswert, wenn der Zufallsgenerator durch Berechnungen zu Zuständen springen kann $s_i => s_i+v$ %TODO%. Dabei soll $v$ groß sein und $i elment N$. Der Benefit von dieser Methode ist, dass durch die Teilung der Sequenze disjoint Streams und Substreams von zufälligen Zahlen erzeugt wird. 
+
+Stastische Prüfungen...
 
 # Methoden zur Simulation von (Pseudo)Zufallszahlen
 
