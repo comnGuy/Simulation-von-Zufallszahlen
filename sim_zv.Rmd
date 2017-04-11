@@ -67,6 +67,8 @@ Weitere Qualitätseigenschaften sind die folgende.
 
 # Methoden zur Simulation von (Pseudo)Zufallszahlen
 
+## Schieberegister
+
 # Zufallszahlen in R
 * R's random number generator.
 ```{r}
@@ -81,7 +83,13 @@ Weitere Qualitätseigenschaften sind die folgende.
     + Knuth-TAOCP
     + L'Ecuyer-CMRG
     + Eigene
+
+## Auswahl der RNG in R
+
+## Eigene RNG
   
+
+# Anwendungen für (Pseudo)zufallzahlen
 
 # Quellen
 Hier kommen Quellen.
