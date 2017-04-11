@@ -49,14 +49,14 @@ Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch 
 
 
 ## Güte eines Zufallszahlengenerators
-[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Sturkur $(a,b,c,d,e)$. %TODO% Wobei 
+[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Sturkur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
 
-* $a$ ist ein endlich Set von Zuständen, 
-* $b$ die Wahrscheinlichkeitverteilung,
-* $c$ Initialisierter Zustand (Seed) $s_0$,
-* $f : a -> a$ ist die Transitionsfunction, %TODO%
-* $d$ Ausgabeplatz und
-* $f : a -> d$ Aufgabefunktion, wobei $d = (0,1)$,
+* $\Delta$ ist ein endlich Set von Zuständen, 
+* $\mu$ die Wahrscheinlichkeitverteilung,
+* Initialisierter Zustand (Seed) $s_0$,
+* $f : \Delta \to \Delta$ ist die Transitionsfunction, %TODO%
+* $U$ Ausgabeplatz und
+* $g : \Delta \to d$ Aufgabefunktion, wobei $d = (0,1)$,
 
 wiederspiegelt.
 
@@ -69,7 +69,7 @@ wiederspiegelt.
 * Portabiltät
     * Der Zufallsgenerator muss auf den unterschiedlichsten Plattformen auf die selbe Art und Weise arbeiten
 * jump-ahead Methode
-    * Es wäre wünschenswert, wenn der Zufallsgenerator durch Berechnungen zu Zuständen springen kann $s_i => s_i+v$ %TODO%. Dabei soll $v$ groß sein und $i elment N$. Der Benefit von dieser Methode ist, dass durch die Teilung der Sequenze disjoint Streams und Substreams von zufälligen Zahlen erzeugt wird. 
+    * Es wäre wünschenswert, wenn der Zufallsgenerator durch Berechnungen zu Zuständen springen kann $s_i \to s_{i+\nu}$ %TODO%. Dabei soll $\nu$ groß sein und $i \in \mathbb{N}$. Der Benefit von dieser Methode ist, dass durch die Teilung der Sequenzen in Streams und Substreams geteilt werden. 
 
 Stastische Prüfungen...
 
