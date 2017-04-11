@@ -27,10 +27,11 @@ Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nic
 
 Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte messen kann. Unter anderem: 
 
-* Radioaktiver Zerfall
-* Wärmerauschen
+* Radioaktiver Zerfall [2]
+* Wärmerauschen [1]
+* zufällige quantenmechanische Vorgänge [2]
 \newline
-* Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
+* Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist) [2]
 * CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
 * Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
 * Spannungsschwankungen an einer Z-Diode.
@@ -58,8 +59,8 @@ Pseudozufall ...
 
 # Quellen
 Hier kommen Quellen.
-[1]
-
+[1] [J.E._Gentle,_Wolfgang_HSrdle,_James_E._Gentle
+[2]Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
 
 
 
