@@ -27,6 +27,9 @@ Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nic
 
 Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte messen kann. Unter anderem: 
 
+* Radioaktiver Zerfall
+* Wärmerauschen
+\newline
 * Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
 * CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
 * Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
