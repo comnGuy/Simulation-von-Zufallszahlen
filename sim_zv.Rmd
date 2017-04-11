@@ -48,9 +48,6 @@ Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in e
 Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \emph{Pseudozufallszahlen} genannt.
 
 
-## Pseudozufall
-Pseudozufall ...
-
 ## Güte eines Zufallszahlengenerators
 [1] Laut James E. Gentle [1] existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. %TODO%
 Weitere Qualitätseigenschaften sind die folgende.
