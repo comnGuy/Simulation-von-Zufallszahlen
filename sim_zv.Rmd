@@ -59,8 +59,11 @@ Weitere Qualitätseigenschaften sind die folgende.
 * Effizient
     * Der Algorithmus des Zufallsgenerators muss schnell ausführbar sein und möglichst wenig Arbeitsspeicher verwenden.
 * Reproduzierbarkeit
+    * Der Algorithmus des Zufallsgenerators muss die Möglichkeit bieten die selbe Reihenfolge der Zufallszahlen zu reproduzieren.
 * Portabiltät
-* %TODO%
+    * Der Algorithmus des Zufallsgenerators muss auf den unterschiedlichsten Plattformen auf die selbe Art und Weise arbeiten
+* jump-ahead
+    * %TODO%
 
 # Methoden zur Simulation von (Pseudo)Zufallszahlen
 
