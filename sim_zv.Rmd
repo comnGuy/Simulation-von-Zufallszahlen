@@ -49,7 +49,7 @@ Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch 
 
 
 ## Güte eines Zufallszahlengenerators
-[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Sturkur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
+[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Struktur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
 
 * $\Delta$ ist ein endlich Set von Zuständen, 
 * $\mu$ die Wahrscheinlichkeitverteilung,
