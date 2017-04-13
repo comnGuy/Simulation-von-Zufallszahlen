@@ -48,7 +48,17 @@ Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in e
 Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \emph{Pseudozufallszahlen} genannt.
 
 
-## Güte eines Zufallszahlengenerators
+
+
+# Methoden zur Simulation von (Pseudo)Zufallszahlen
+
+## Schieberegister
+
+## Inversionsmethode
+
+## Hybride Generatoren
+
+# Güte eines Zufallszahlengenerators
 [1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Struktur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
 
 * $\Delta$ ist ein endlich Set von Zuständen, 
@@ -71,11 +81,13 @@ wiederspiegelt.
 * jump-ahead Methode
     * Es wäre wünschenswert, wenn der Zufallsgenerator durch Berechnungen zu Zuständen springen kann $s_i \to s_{i+\nu}$ %TODO%. Dabei soll $\nu$ groß sein und $i \in \mathbb{N}$. Der Benefit von dieser Methode ist, dass durch die Teilung der Sequenzen in Streams und Substreams geteilt werden. 
 
-Stastische Prüfungen...
+## Analytische Prüfungen
 
-# Methoden zur Simulation von (Pseudo)Zufallszahlen
+* Graphische Analyse (zeigen in R) 
 
-## Schieberegister
+## Stastische Prüfungen
+
+
 
 # Zufallszahlen in R
 * R's random number generator.
@@ -94,6 +106,11 @@ Stastische Prüfungen...
 
 ## Auswahl der RNG in R
 
+```{r}
+# insert random R-code
+```
+
+
 ## Eigene RNG
   
 
@@ -103,6 +120,7 @@ Stastische Prüfungen...
 Hier kommen Quellen.
 [1] [J.E._Gentle,_Wolfgang_HSrdle,_James_E._Gentle
 [2]Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
+stochastische Simulation
 
 
 
