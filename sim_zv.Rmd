@@ -13,11 +13,13 @@ output:
 
 \newpage
 # Motiviation
-Zufallszahlen spielen heutzutage eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereingissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
+Zufallszahlen spielen eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereingissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
 Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Automat) stellt allerdings eine besondere Herausforderung dar, da jede Operation durch die Vorherige definiert wird und daher (theoretisch) berechenbar ist.
 
 # Definitionen
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
+
+## Simulation
 
 ## Zufallsvariablen \& Zufallszahlen
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
@@ -31,32 +33,36 @@ Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte mes
 * Wärmerauschen [1]
 * zufällige quantenmechanische Vorgänge [2]
 * Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist) [2]
-\newline
-* CCD-Sensorrauschen (mit einer schlechten (z. B. Handy-) Kamera in einem dunklen Raum fotografieren und daraus Zufallszahlen ableiten)
-* Schwankung der tatsächlichen Zeitdauer einer mit einem Zeitgeber („Timer“) gemessenen Zeitdauer.
-* Spannungsschwankungen an einer Z-Diode.
 
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=100px, height=100px]{img/FST-01_board.png}
-	\caption {Der Flying Stone Technology FST-01 erzeugt echte Zufallszahlen aus dem Rauschen bei der Analog-Digital Signalumwandlung}
+	\caption {Der Flying Stone Technology FST-01 erzeugt echte Zufallszahlen aus dem Rauschen bei der Analog-Digital Signalumwandlung.}
 	\label{fig2}
 \end{figure}
 
 Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten
 
-Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \emph{Pseudozufallszahlen} genannt.
+Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \textbf{Pseudozufallszahlen} genannt.
 
 
+# Erzeugen von (Pseudo)Zufallszahlen
+Um Zufallszahlen zu erzeugen...
 
+## Generatoren für gleichverteilte Zufallszahlen
 
-# Methoden zur Simulation von (Pseudo)Zufallszahlen
+### Methode 1
 
-## Schieberegister
+### Methode 2
 
-## Inversionsmethode
+### Sonstige
 
-## Hybride Generatoren
+## Generatoren for sonstige Verteilungen
+
+### Inversionsmethode
+
+### Sonstige Methoden
+
 
 # Güte eines Zufallszahlengenerators
 [1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Struktur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
@@ -83,13 +89,14 @@ wiederspiegelt.
 
 ## Analytische Prüfungen
 
-* Graphische Analyse (zeigen in R) 
+* Graphische `Analyse` (zeigen in R) 
 
 ## Stastische Prüfungen
 
 
 
 # Zufallszahlen in R
+* Die Statistik-software R enthält eine umfangreiche 
 * R's random number generator.
 ```{r}
 #?RNG
@@ -110,9 +117,9 @@ wiederspiegelt.
 # insert random R-code
 ```
 
-
 ## Eigene RNG
-  
+
+## Prüfung auf Unabhängigkeit der Zufallszahlen
 
 # Anwendungen für (Pseudo)zufallzahlen
 
