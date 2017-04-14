@@ -45,8 +45,17 @@ Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in e
 
 Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \textbf{Pseudozufallszahlen} genannt.
 
+# Ziel eines deterministischen Zufallsgenerators <!-- TODO Sollten wir wahrscheinlich in ein Kapitel reinklatschen --> 
+Bevor mit dem Bau eines deterministischer Zufallsgenerators begonnen wird, stellt sich die Frage, welches Ziel ein solcher Zufallsgenerator erfüllen soll. Umgangsprachlich kann ein Ziel für die Simulation von Zufallszahlen auf einen Rechner folglich definiert werden:
+
+> \textbf{"... ein auf einem Rechner ablauffähiges Zufallsexperiment zu erhalten, ..."}, Michael Kolonk
+
+Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Ebene zu heben.
+
+> Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1$, Michael Kolonk
 
 # Erzeugen von (Pseudo)Zufallszahlen
+
 Um Zufallszahlen zu erzeugen...
 
 ## Generatoren für gleichverteilte Zufallszahlen
@@ -65,33 +74,14 @@ Um Zufallszahlen zu erzeugen...
 
 
 # Güte eines Zufallszahlengenerators
-[1] L'Ecuyer definierte einen deterministischen Algorithmus durch die Struktur $(\Delta,\mu,f,U,g)$. %TODO% Wobei 
+Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
-* $\Delta$ ist ein endlich Set von Zuständen, 
-* $\mu$ die Wahrscheinlichkeitverteilung,
-* Initialisierter Zustand (Seed) $s_0$,
-* $f : \Delta \to \Delta$ ist die Transitionsfunction, %TODO%
-* $U$ Ausgabeplatz und
-* $g : \Delta \to d$ Aufgabefunktion, wobei $d = (0,1)$,
-
-wiederspiegelt.
-
-[1] Laut James E. Gentle existieren mehrere Eigenschaften, die die Qualität eines Zufallsgenerators misst. Das wohl intuitivste Kriterium ist die Wiederholbarkeit der zufällig ausgegebenn Zahlen. Die \textbf{Periode} der Zahlen sollte sich erst nach einer sehr großen Länge wieder schließen, sodass sie möglichst nicht auffällt. Dies muss mathematisch überprüft werden. Weitere Qualitätseigenschaften sind die folgende.
-
-* Effizient
-    * Der Zufallsgenerator muss schnell ausführbar sein und möglichst wenig Arbeitsspeicher verwenden.
-* Reproduzierbarkeit
-    * Der Zufallsgenerator muss die Möglichkeit bieten die selbe Reihenfolge der Zufallszahlen zu reproduzieren.
-* Portabiltät
-    * Der Zufallsgenerator muss auf den unterschiedlichsten Plattformen auf die selbe Art und Weise arbeiten
-* jump-ahead Methode
-    * Es wäre wünschenswert, wenn der Zufallsgenerator durch Berechnungen zu Zuständen springen kann $s_i \to s_{i+\nu}$ %TODO%. Dabei soll $\nu$ groß sein und $i \in \mathbb{N}$. Der Benefit von dieser Methode ist, dass durch die Teilung der Sequenzen in Streams und Substreams geteilt werden. 
-
-## Analytische Prüfungen
+## Analytische Gütekriterium
+Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallsgeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher der Vergleich mit weiteren Generatoren nicht ideal ist.
 
 * Graphische `Analyse` (zeigen in R) 
 
-## Stastische Prüfungen
+## Statistischen Gütekriterium
 
 
 
