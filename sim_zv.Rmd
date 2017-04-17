@@ -52,7 +52,7 @@ Bevor mit dem Bau eines deterministischer Zufallsgenerators begonnen wird, stell
 
 Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Ebene zu heben.
 
-> Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1$, Michael Kolonk
+> Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
 
 # Erzeugen von (Pseudo)Zufallszahlen
 
@@ -77,7 +77,7 @@ Um Zufallszahlen zu erzeugen...
 Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
 ## Analytische Gütekriterium
-Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallsgeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher der Vergleich mit weiteren Generatoren nicht ideal ist.
+Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen. 
 
 * Graphische `Analyse` (zeigen in R) 
 
