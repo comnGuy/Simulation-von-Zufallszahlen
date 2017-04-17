@@ -77,7 +77,9 @@ Um Zufallszahlen zu erzeugen...
 Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
 ## Analytische Gütekriterium
-Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen. 
+Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen.
+
+Einer dieser vergleichbaren Eigenschaften kann die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über ein stimmen. <!-- Hier sollten wir die mathematischen Defintionen checken, wo die herkommen. Hierzu gibt es noch einen Satz, den ich nicht ganz verstehe S. 51 -->
 
 * Graphische `Analyse` (zeigen in R) 
 
