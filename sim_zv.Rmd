@@ -82,8 +82,11 @@ Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische G
 Einer dieser vergleichbaren Eigenschaften kann die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über ein stimmen. Sei $(X_n){n\ge0}$ eine Folge von Zufallsvariablen mit den Werten in $[0,1]$. $(X_n){n\ge0}$ ist i.i.d mit der Verteilung $U(0,1)$, falls fir alle $d \in \mathbb{N}$ und alle $0 \le a_i \le b_i \le 1, i = 0,...,d-1$, gilt
 
 $$ P(a_i < X_i \le b_i, i = 0,...,d-1) = \prod_{i=0}^{d-1}(b_i-a_i)$$
+Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlich Gebiete empirisch und analytisch. Die \textbf{empirische Unterschung} nimmt ein bestehendes mathemathisches Modell an und überprüft, ob die beobachteten Ereignisse von Zufallszahlen mit den mathematischen Modell zusammen passt. Dabei besteht die Möglichkeit diese Untersuchung graphisch oder statistisch durchzuführen. Folgende Nachteile entstehen bei der empirischen Untersuchung.
 
-* Graphische `Analyse` (zeigen in R) 
+* Es besteht nur die Möglichkeit endlich viele Bedingungen zu überprüfen
+
+Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
 
 ## Statistischen Gütekriterium
 
