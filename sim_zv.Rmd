@@ -88,7 +88,17 @@ Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlich Gebiete e
 
 Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
 
+### d-gleichverteilte Folgen
+Wie im vorigen Kapitel angesprochen, kann nur eine endliche Zahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden kann. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. 
 
+Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden können. $\tilde{x}_i$ ist für  in der Form
+
+$$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
+überlappend. Wenn
+
+* $1 \le k \le d - 1$ für $\tilde{x}_i$ gilt,  die Teilstücke überlappend, wenn
+* $k = d$ gilt, sind die Teilstücke disjunkt und lückenlos sind, wenn
+* $k > d$ gilt, sind die Teilstücke disjunkt und gespreizt sind. 
 
 ## Statistischen Gütekriterium
 
