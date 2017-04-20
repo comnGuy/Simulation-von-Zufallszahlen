@@ -57,7 +57,13 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
-### Methode 1
+Um gleichverteilte Zufallszahlen zu erzeugen, 
+
+### Mittquadratverfahren
+
+* engl.: middle-square-method
+* Einfacher RNG von John von Neumann
+* siehe: Shiny app
 
 ### Sonstige
 
