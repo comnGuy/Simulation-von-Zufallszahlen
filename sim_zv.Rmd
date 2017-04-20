@@ -45,7 +45,8 @@ Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in e
 
 Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \textbf{Pseudozufallszahlen} genannt.
 
-# Ziel eines deterministischen Zufallsgenerators <!-- TODO Sollten wir wahrscheinlich in ein Kapitel reinklatschen --> 
+# Erzeugen von (Pseudo)Zufallszahlen
+
 Bevor mit dem Bau eines deterministischer Zufallsgenerators begonnen wird, stellt sich die Frage, welches Ziel ein solcher Zufallsgenerator erfüllen soll. Umgangsprachlich kann ein Ziel für die Simulation von Zufallszahlen auf einen Rechner folglich definiert werden:
 
 > \textbf{"... ein auf einem Rechner ablauffähiges Zufallsexperiment zu erhalten, ..."}, Michael Kolonk
@@ -53,10 +54,6 @@ Bevor mit dem Bau eines deterministischer Zufallsgenerators begonnen wird, stell
 Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Ebene zu heben.
 
 > Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
-
-# Erzeugen von (Pseudo)Zufallszahlen
-
-Um Zufallszahlen zu erzeugen...
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
@@ -108,7 +105,8 @@ Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators 
     + Eigene
 
 ## Setzen eines Seeds (optional)
-
+```{r}
+```
 
 ## Auswahl der RNG in R
 
