@@ -18,13 +18,13 @@ ui <- fluidPage(
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
-        textInput(inputId="Clock",label="Aktuelle Uhrzeit:", value=format(Sys.time(), "%X")),
+        textInput(inputId="Clock",label="Aktuelle Uhrzeit:", value=format(Sys.time(), "%H:%M")),
         actionButton(inputId="Step", label="Nächster Schritt")
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
-         plotOutput("steps")
+         textOutput("steps")
       )
    )
 )
@@ -32,9 +32,7 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
    
-   output$steps <- renderText({
-     
-   })
+   output$steps <- renderPrint({"test"})
 }
 
 # Run the application 
