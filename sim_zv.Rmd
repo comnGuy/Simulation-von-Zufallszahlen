@@ -62,8 +62,6 @@ Um Zufallszahlen zu erzeugen...
 
 ### Methode 1
 
-### Methode 2
-
 ### Sonstige
 
 ## Generatoren for sonstige Verteilungen
@@ -93,8 +91,9 @@ Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators 
 
 
 # Zufallszahlen in R
-* Die Statistik-software R enthält eine umfangreiche 
+* Die Statistik-software R enthält mehrere Generatoren für Zufallszahlen
 * R's random number generator.
+* Setzen von Seeds
 ```{r}
 #?RNG
 ```
@@ -108,17 +107,20 @@ Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators 
     + L'Ecuyer-CMRG
     + Eigene
 
+## Setzen eines Seeds (optional)
+
+
 ## Auswahl der RNG in R
 
 ```{r}
 # insert random R-code
+# 
 ```
 
 ## Eigene RNG
 
 ## Prüfung auf Unabhängigkeit der Zufallszahlen
 
-# Anwendungen für (Pseudo)zufallzahlen
 
 # Quellen
 Hier kommen Quellen.
