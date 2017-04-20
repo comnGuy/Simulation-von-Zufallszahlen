@@ -24,7 +24,7 @@ ui <- fluidPage(
       
       # Show a plot of the generated distribution
       mainPanel(
-         textOutput("steps")
+         uiOutput("steps")
       )
    )
 )
@@ -32,7 +32,8 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
    
-   output$steps <- renderPrint({"test"})
+   clock <- input$Clock
+   output$steps <- renderUI({h1(clock)})
 }
 
 # Run the application 
