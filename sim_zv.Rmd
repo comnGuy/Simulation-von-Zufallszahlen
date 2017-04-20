@@ -64,6 +64,7 @@ Um gleichverteilte Zufallszahlen zu erzeugen,
 * engl.: middle-square-method
 * Einfacher RNG von John von Neumann
 * siehe: Shiny app
+* Dazu fällt mir gleich noch was ein.
 
 ### Sonstige
 
