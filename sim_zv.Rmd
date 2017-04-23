@@ -104,6 +104,33 @@ $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 * $k = d$ gilt, sind die Teilstücke disjunkt und lückenlos sind, wenn
 * $k > d$ gilt, sind die Teilstücke disjunkt und gespreizt sind. 
 
+### Graphische Überprüfung der Gleichverteilung
+```{r}
+library(ggplot2)
+numberOfRandomNumbers <- 100000
+
+RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
+datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister")
+
+RNGkind("Super") # matches  "Super-Duper"
+datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper")
+
+RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
+datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
+
+data <- rbind(datamt, datasd, datawh)
+
+ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) + 
+  geom_histogram(bins = 30) + 
+  facet_grid(~ KindOfRandom) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
+  x = "Generierte Zufallszahlen (30er Bins)",
+  y = "Anzahl der Zufallszahlen pro Bin")
+```
+
 ## Statistischen Gütekriterium
 
 
