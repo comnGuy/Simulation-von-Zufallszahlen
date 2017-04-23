@@ -72,6 +72,36 @@ Um gleichverteilte Zufallszahlen zu erzeugen,
 
 ### Inversionsmethode
 
+### PP-Coincidence
+```{r}
+options(expressions=100000)
+# Berechnet die neue Zufallszahl
+PP.Coincidence.CalculateNumber <- function (randomNumber) {
+  first <- as.numeric(substr(randomNumber, 0, 5))
+  second <- as.numeric(substr(randomNumber, 6, 10))
+  
+  if(is.na(second) || second == 0) {
+    second <- bitwXor(first, as.numeric(substr(as.numeric(Sys.time()), 6, 10)))
+  }
+  return (first * second)
+}
+
+# Rekursiver Aufrauf
+PP.Coincidence.Recursive <- function(numberOfRandomNumbers, randomNumber, randomList) {
+  if (numberOfRandomNumbers <=0 ) {
+    return( c() )
+  } else {
+    newRN <- PP.Coincidence.CalculateNumber(randomNumber)
+    return( c(Recall(numberOfRandomNumbers-1, newRN, randomList),newRN/10000000000) )
+  }
+}
+
+# Initialaufruf mit einer Anzahl von Zufallszahlen
+PP.Coincidence <- function(numberOfRandomNumbers){
+  return (PP.Coincidence.Recursive(numberOfRandomNumbers, as.numeric(Sys.time()), c()))
+}
+```
+
 ### Sonstige Methoden
 
 
@@ -105,9 +135,10 @@ $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 * $k > d$ gilt, sind die Teilstücke disjunkt und gespreizt sind. 
 
 ### Graphische Überprüfung der Gleichverteilung
-```{r}
+
+```{r, echo=FALSE}
 library(ggplot2)
-numberOfRandomNumbers <- 100000
+numberOfRandomNumbers <- 2000
 
 RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
 datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister")
@@ -115,19 +146,21 @@ datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenn
 RNGkind("Super") # matches  "Super-Duper"
 datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper")
 
-RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
-datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
+#RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
+#datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
 
-data <- rbind(datamt, datasd, datawh)
+dataPP = data.frame(data = PP.Coincidence(numberOfRandomNumbers), KindOfRandom = "PP-Coincidence")
+
+data <- rbind(datamt, datasd, dataPP)
 
 ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) + 
-  geom_histogram(bins = 30) + 
+  geom_histogram(bins = 50) + 
   facet_grid(~ KindOfRandom) +
   theme(legend.direction = "horizontal", 
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte Zufallszahlen (30er Bins)",
+  x = "Generierte Zufallszahlen (50er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
