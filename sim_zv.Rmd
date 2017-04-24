@@ -135,6 +135,13 @@ $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 * $k > d$ gilt, sind die Teilstücke disjunkt und gespreizt sind. 
 
 ### Graphische Überprüfung der Gleichverteilung
+Jetzt gilt die vorgeschlagenen Bedingungen anhand von graphischen Mitteln zu untersuchen. Als Beispiel wurde der Mersenne-Twister, Super-Duper und PP-Coincidence ausgewählt. Alle ausgewählten Verfahren sollten nach Möglichkeit gleichverteilt nach der Verteilung $U(0,1)$ erfüllen. 
+
+Der \textbf{Mersenne-Twister} arbeitet mit einer Periodenlänge von $p = 2^{19937} - 1$. Wie der Name schon sagt, ist das eine Mersenne-Prinzahl. Der Pseudozufallszahlengenerator \textbf{Super-Duper} wurde in den 70ger Jahren erfunden und arbeitet mit einer Periodenlänge von $p = 6*10^{18}$. Die Eigenkreation \textbf{PP-Coincidence} wurde auswführlich im vorigen Kapitel beschrieben.
+
+Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich große Teilintervalle $I_0,...,I_{31}$. Durch die Unterteilung besteht die Möglichkeit die Anzahl der Vorkommnisse in jeden Teilintervall mit der Formel
+$$h_i := \displaystyle\sum_{n=0}^{N-1} 1_{I_i}(u_n)$$
+zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfrac{h_i}{N}$ bestimmt werden.
 
 ```{r, echo=FALSE}
 library(ggplot2)
@@ -154,13 +161,13 @@ dataPP = data.frame(data = PP.Coincidence(numberOfRandomNumbers), KindOfRandom =
 data <- rbind(datamt, datasd, dataPP)
 
 ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) + 
-  geom_histogram(bins = 50) + 
+  geom_histogram(bins = 32) + 
   facet_grid(~ KindOfRandom) +
   theme(legend.direction = "horizontal", 
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte Zufallszahlen (50er Bins)",
+  x = "Generierte Zufallszahlen (32er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
@@ -202,8 +209,9 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
 
 
 # Quellen
-Hier kommen Quellen.
+
 [1] [J.E._Gentle,_Wolfgang_HSrdle,_James_E._Gentle
+
 [2]Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
 stochastische Simulation
 
