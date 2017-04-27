@@ -74,7 +74,13 @@ $$Z_i := z\ \oplus\ \lfloor z / 2^{18}\rfloor$$
 
 $Z_i$ ist eine Zufallszahl.
 
-Bemerkung ...
+
+Bemerkung:
+
+* Durch die Bitoperationen ist der Algorithmus sehr schnell.
+* Die Parallelisierung ist leicht zu realisieren.
+* Der Generator benötigt ca. 2,5 kByte, welches auf kleineren Systemen mit wenig Cache zu Performanceeinbußen kommt.
+* Der Mersenne-Twister wird in R als Standardpseudozufallszahlengenerator benutzt.
 
 ### Mittquadratverfahren
 Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen.  Er wurde 1946 von John von Neumann entwickelt. 
