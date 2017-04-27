@@ -73,9 +73,15 @@ Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfache
 Für den Fall, dass 
 
 ### Inversionsmethode
-Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen. Diesem Generator liegt das \textbf{Inversionsprinzip} zugrunde, bei dem  
+Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen. Diesem Generator liegt das \textbf{Simulationslemma} zugrunde, das besagt, dass
+
+\emph{Beispiel:} Simulation der Exponentialverteilung $exp(\alpha)$
+Die Verteilung mit der Dichte $f(t)=\alpha e^{-\alpha t}$ für $\alpha > 0, t>0$ und der Verteilungsfunktion $F(t)=1-e^{-\alpha e}$ mit $t>0$.
+
 
 Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei ) nicht effizient berechnen lässt.
+
+
 
 
 
