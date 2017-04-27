@@ -57,14 +57,15 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
-Um gleichverteilte Zufallszahlen zu erzeugen, 
+
 
 ### Mittquadratverfahren
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen.  Er wurde 1946 von John von Neumann entwickelt. 
 
-* engl.: middle-square-method
-* Einfacher RNG von John von Neumann
+* Problem beim Auftauchen der Null
+* Häufige Wiederholungen
+* Verwendung als Hash-Funktion
 * siehe: Shiny app
-* Dazu fällt mir gleich noch was ein.
 
 ### Sonstige
 
@@ -72,9 +73,7 @@ Um gleichverteilte Zufallszahlen zu erzeugen,
 Für den Fall, dass 
 
 ### Inversionsmethode
-Mit Hilfe der \textbf{Inversionsmethode} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen.
-
-
+Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen. Diesem Generator liegt das \textbf{Inversionsprinzip} zugrunde, bei dem  
 
 Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei ) nicht effizient berechnen lässt.
 
@@ -111,9 +110,9 @@ Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert die
 ### Sonstige Methoden
 Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
 
-* \textbf{Verwerfungsmethode (engl.: Acceptance-Rejection-Verfahren)}: Alternative zur Inversionsmethode, für Wahrscheinlichkeitsverteilungen, die zu komplex zu berechnen sind.
+* \textbf{Verwerfungsmethode (engl.: Rejection sampling)}: Alternative zur Inversionsmethode, für Wahrscheinlichkeitsverteilungen, die zu komplex zu berechnen sind.
 
-* \textbf{Kompositionsmethode}
+* \textbf{Kompositionsmethode}: 
 
 # Güte eines Zufallszahlengenerators
 Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
