@@ -68,12 +68,18 @@ Um gleichverteilte Zufallszahlen zu erzeugen,
 
 ### Sonstige
 
-## Generatoren for sonstige Verteilungen
+## Generatoren für sonstige Verteilungen
+Für den Fall, dass 
 
 ### Inversionsmethode
+Mit Hilfe der \textbf{Inversionsmethode} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen.
+
+
+
+Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei ) nicht effizient berechnen lässt.
 
 ### PP-Coincidence
-```{r}
+```{r, echo=FALSE}
 #options(expressions=100000)
 # Berechnet die neue Zufallszahl
 #PP.Coincidence.CalculateNumber <- function (randomNumber) {
@@ -103,12 +109,16 @@ Um gleichverteilte Zufallszahlen zu erzeugen,
 ```
 
 ### Sonstige Methoden
+Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
 
+* \textbf{Verwerfungsmethode (engl.: Acceptance-Rejection-Verfahren)}: Alternative zur Inversionsmethode, für Wahrscheinlichkeitsverteilungen, die zu komplex zu berechnen sind.
+
+* \textbf{Kompositionsmethode}
 
 # Güte eines Zufallszahlengenerators
 Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
-## Analytische Gütekriterium
+## Analytische Gütekriterien
 Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen.
 
 Einer dieser vergleichbaren Eigenschaften kann die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über ein stimmen. Sei $(X_n){n\ge0}$ eine Folge von Zufallsvariablen mit den Werten in $[0,1]$. $(X_n){n\ge0}$ ist i.i.d mit der Verteilung $U(0,1)$, falls fir alle $d \in \mathbb{N}$ und alle $0 \le a_i \le b_i \le 1, i = 0,...,d-1$, gilt
@@ -171,7 +181,7 @@ library(ggplot2)
 #  y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
-## Statistischen Gütekriterium
+## Statistische Gütekriterien
 
 
 
@@ -212,8 +222,9 @@ library(ggplot2)
 
 [1] [J.E._Gentle,_Wolfgang_HSrdle,_James_E._Gentle
 
-[2]Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
-stochastische Simulation
+[2] Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
+
+[3] Stochastische Simulation
 
 
 
