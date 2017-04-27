@@ -29,10 +29,10 @@ Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nic
 
 Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte messen kann. Unter anderem: 
 
-* Radioaktiver Zerfall [2]
-* Wärmerauschen [1]
-* zufällige quantenmechanische Vorgänge [2]
-* Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist) [2]
+* Radioaktiver Zerfall
+* Wärmerauschen
+* zufällige quantenmechanische Vorgänge
+* Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
 
 \begin{figure}[ht]
 	\centering
@@ -77,35 +77,7 @@ Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} las
 
 Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei ) nicht effizient berechnen lässt.
 
-### PP-Coincidence
-```{r, echo=FALSE}
-#options(expressions=100000)
-# Berechnet die neue Zufallszahl
-#PP.Coincidence.CalculateNumber <- function (randomNumber) {
-#  first <- as.numeric(substr(randomNumber, 0, 5))
-#  second <- as.numeric(substr(randomNumber, 6, 10))
-#  
-#  if(is.na(second) || second == 0) {
-#    second <- bitwXor(first, as.numeric(substr(as.numeric(Sys.time()), 6, 10)))
-#  }
-#  return (first * second)
-#}
 
-# Rekursiver Aufrauf
-#PP.Coincidence.Recursive <- function(numberOfRandomNumbers, randomNumber, randomList) {
-#  if (numberOfRandomNumbers <=0 ) {
-#    return( c() )
-#  } else {
-#    newRN <- PP.Coincidence.CalculateNumber(randomNumber)
-#    return( c(Recall(numberOfRandomNumbers-1, newRN, randomList),newRN/10000000000) )
-#  }
-#}
-
-# Initialaufruf mit einer Anzahl von Zufallszahlen
-#PP.Coincidence <- function(numberOfRandomNumbers){
-#  return (PP.Coincidence.Recursive(numberOfRandomNumbers, as.numeric(Sys.time()), c()))
-#}
-```
 
 ### Sonstige Methoden
 Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
@@ -154,30 +126,28 @@ zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfr
 
 ```{r, echo=FALSE}
 library(ggplot2)
-#numberOfRandomNumbers <- 2000
+numberOfRandomNumbers <- 10000
 
-#RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
-#datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister")
+RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
+datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister")
 
-#RNGkind("Super") # matches  "Super-Duper"
-#datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper")
+RNGkind("Super") # matches  "Super-Duper"
+datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper")
 
-#RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
-#datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
+RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
+datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
 
-#dataPP = data.frame(data = PP.Coincidence(numberOfRandomNumbers), KindOfRandom = "PP-Coincidence")
+data <- rbind(datamt, datasd, datawh)
 
-#data <- rbind(datamt, datasd, dataPP)
-
-#ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) + 
-#  geom_histogram(bins = 32) + 
-#  facet_grid(~ KindOfRandom) +
-#  theme(legend.direction = "horizontal", 
-#        legend.position = "bottom",
-#        legend.box = "horizontal") +
-#  labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-#  x = "Generierte Zufallszahlen (32er Bins)",
-#  y = "Anzahl der Zufallszahlen pro Bin")
+ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) + 
+  geom_histogram(bins = 32) + 
+  facet_grid(~ KindOfRandom) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
+  x = "Generierte Zufallszahlen (32er Bins)",
+  y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
 ## Statistische Gütekriterien
@@ -213,7 +183,35 @@ library(ggplot2)
 ```
 
 ## Eigene RNG
+### PP-Coincidence
+```{r, echo=FALSE}
+#options(expressions=100000)
+# Berechnet die neue Zufallszahl
+#PP.Coincidence.CalculateNumber <- function (randomNumber) {
+#  first <- as.numeric(substr(randomNumber, 0, 5))
+#  second <- as.numeric(substr(randomNumber, 6, 10))
+#  
+#  if(is.na(second) || second == 0) {
+#    second <- bitwXor(first, as.numeric(substr(as.numeric(Sys.time()), 6, 10)))
+#  }
+#  return (first * second)
+#}
 
+# Rekursiver Aufrauf
+#PP.Coincidence.Recursive <- function(numberOfRandomNumbers, randomNumber, randomList) {
+#  if (numberOfRandomNumbers <=0 ) {
+#    return( c() )
+#  } else {
+#    newRN <- PP.Coincidence.CalculateNumber(randomNumber)
+#    return( c(Recall(numberOfRandomNumbers-1, newRN, randomList),newRN/10000000000) )
+#  }
+#}
+
+# Initialaufruf mit einer Anzahl von Zufallszahlen
+#PP.Coincidence <- function(numberOfRandomNumbers){
+#  return (PP.Coincidence.Recursive(numberOfRandomNumbers, as.numeric(Sys.time()), c()))
+#}
+```
 ## Prüfung auf Unabhängigkeit der Zufallszahlen
 
 
