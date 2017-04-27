@@ -139,16 +139,16 @@ zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfr
 
 ```{r, echo=FALSE}
 library(ggplot2)
-numberOfRandomNumbers <- 100000
+numberOfRandomNumbers <- 10000
 
 RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
-datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister")
+datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
 
 RNGkind("Super") # matches  "Super-Duper"
-datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper")
+datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper", pos = 1:numberOfRandomNumbers)
 
 RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
-datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill")
+datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill", pos = 1:numberOfRandomNumbers)
 
 data <- rbind(datamt, datasd, datawh)
 
@@ -159,8 +159,27 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte Zufallszahlen (32er Bins)",
+  x = "Generierte 100000 Zufallszahlen (32er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
+```
+
+Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 100000$ Zahlen pro Generator in einem Histrogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 3.125$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
+
+Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
+
+```{r, echo=FALSE}
+RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
+datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
+
+ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) + 
+  geom_point(size = 0.01) +
+  facet_grid(~ KindOfRandom) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Unterschiedliche Zufallszahlengeneratoren als Plot",
+  x = "Anzahl der Zufallszahlen",
+  y = "Spannweite des Zufallsgenerators")
 ```
 
 ## Statistische Gütekriterien
