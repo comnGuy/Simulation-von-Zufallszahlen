@@ -152,9 +152,13 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte Zufallszahlen (32er Bins)",
+  x = "Generierte 100000 Zufallszahlen (32er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
 ```
+
+Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 100000$ Zahlen pro Generator in einem Histrogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 3.125$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
+
+Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
 
 ## Statistische Gütekriterien
 
