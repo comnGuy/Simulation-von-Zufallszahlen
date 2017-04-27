@@ -33,7 +33,7 @@ ui <- fluidPage(
 server <- function(input, output) {
    
    clock <- input$Clock
-   output$steps <- renderUI({h1(clock)})
+   output$steps <- renderUI({h1("test")})
 }
 
 # Run the application 
