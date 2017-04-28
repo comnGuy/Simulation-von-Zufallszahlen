@@ -183,9 +183,6 @@ Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengenerator
 Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
 
 ```{r, echo=FALSE}
-RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
-datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
-
 ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) + 
   geom_point(size = 0.01) +
   facet_grid(~ KindOfRandom) +
@@ -193,9 +190,11 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren als Plot",
-  x = "Anzahl der Zufallszahlen",
+  x = "Zufallszahlen",
   y = "Spannweite des Zufallsgenerators")
 ```
+
+Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgeneratoren. Zwischen $x$ und $y$ sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $y$ möglichst unabhängig von seiner Position $x$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Fläschen sehen gleichmäßig aus.
 
 ## Statistische Gütekriterien
 
