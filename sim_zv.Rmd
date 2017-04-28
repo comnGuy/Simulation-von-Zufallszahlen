@@ -218,34 +218,50 @@ Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgener
 
 
 # Zufallszahlen in R
-* Die Statistik-software R enthält mehrere Generatoren für Zufallszahlen
-* R's random number generator.
-* Setzen von Seeds
+In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt in R ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators einen sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jeden Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. Weitere Informationen können über den folgenden Befehl abgerufen werden.
+
 ```{r}
 #?RNG
 ```
-* Verschiedene Methoden zur Auswahl
-    + Wichmann-Hill
-    + Marsaglia-Multicarry
-    + Super-Duper
-    + Marsenne-Twister
-    + Knuth-TAOCP-2002
-    + Knuth-TAOCP
-    + L'Ecuyer-CMRG
-    + Eigene
 
-## Setzen eines Seeds (optional)
-```{r}
-#library(PPC)
-#PP.Coincidence(10)
-```
+R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
+
+  * Wichmann-Hill
+  * Marsaglia-Multicarry
+  * Super-Duper
+  * Marsenne-Twister
+  * Knuth-TAOCP-2002
+  * Knuth-TAOCP
+  * L'Ecuyer-CMRG
+  * RNGkind() bietet die Möglichkeit einen eigenen Zufallszahlengenerator zu programmieren.
 
 ## Auswahl der RNG in R
 
-```{r}
-# insert random R-code
-# 
+```{r results='hide'}
+# RNGkind setzt den Pseudozufallsgenerator
+# Setzt den Zufallsgenerator auf L'Ecuyer-CMRG
+RNGkind("L'Ecuyer-CMRG")
+
+# Gibt den aktuellen Zufallsgenerator aus
+RNGkind()
+
+# Setzt den Zufallsgenerator auf Mersenne-Twister (default)
+RNGkind("Mersenne-Twister")
 ```
+
+## Setzen eines Seeds (optional)
+```{r results='hide'}
+# Setzt den Seed auf 123456789 für genau den nächsten Aufruf
+set.seed(123456789)
+
+# Generiert immer die selben 10 Zufallszahlen wegen den seed.
+runif(10)
+
+# Generiert 10 Zufallszahlen ohne Seed
+runif(10)
+```
+
+
 
 ## Eigene RNG
 ### PP-Coincidence
