@@ -58,7 +58,7 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 ## Generatoren für gleichverteilte Zufallszahlen
 
 ### Mersenne-Twister
-Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura Im Jahr 1997 entwickelt. Er hat eine sehr lange Periodenlänge von $p = 2^{19937} - 1$, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
+Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura Im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
 Der \textbf{Algorithmus} startet mit $N = 624$ verschiedene Wörter, die mit $Y_1\ ...\ Y_N$ bezeichnet werden. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator generiert werden. Hierbei muss drauf geachtet werden, dass nicht zuviele Wörter mit 0 initialisiert werden. Sind die Initialwörter gewählt, berechnet der Mersenne-Twister die weiteren Pseudzufallszahlen wie folgt.
 
@@ -73,7 +73,6 @@ $$z := y\ \oplus\ ((y\ \cdot\ 2^15)\ \wedge\ EFC60000_{hex}$$
 $$Z_i := z\ \oplus\ \lfloor z / 2^{18}\rfloor$$
 
 $Z_i$ ist eine Zufallszahl.
-
 
 Bemerkung:
 
@@ -269,7 +268,8 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
 
 [2] Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
 
-[3] Stochastische Simulation
+[3] Michael Kolonk, Stochastische Simulation
 
+[4] Makoto Matsumoto, Twisted GFSR Generators, http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/tgfsr3.pdf
 
-
+[5] Makoto Matsumoto, Mersenne Twister, http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/mt.pdf
