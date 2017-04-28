@@ -55,6 +55,8 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 > Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
 
+Alle Pseudozufallsgeneratoren kommen an einer Position an, wo sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
+
 ## Generatoren für gleichverteilte Zufallszahlen
 
 ### Mersenne-Twister
@@ -80,6 +82,7 @@ Bemerkung:
 * Die Parallelisierung ist leicht zu realisieren.
 * Der Generator benötigt ca. 2,5 kByte, welches auf kleineren Systemen mit wenig Cache zu Performanceeinbußen kommt.
 * Der Mersenne-Twister wird in R als Standardpseudozufallszahlengenerator benutzt.
+* Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
 
 ### Mittquadratverfahren
 Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen.  Er wurde 1946 von John von Neumann entwickelt. 
@@ -174,11 +177,11 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte 100000 Zufallszahlen (32er Bins)",
+  x = "Generierte 10000 Zufallszahlen (32er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
-Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 100000$ Zahlen pro Generator in einem Histrogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 3.125$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
+Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 10000$ Zahlen pro Generator in einem Histrogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 312,5$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
 
 Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
 
@@ -219,6 +222,8 @@ Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgener
 
 ## Setzen eines Seeds (optional)
 ```{r}
+library(PPC)
+PP.Coincidence(10)
 ```
 
 ## Auswahl der RNG in R
