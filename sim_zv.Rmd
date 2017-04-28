@@ -76,7 +76,7 @@ $$Z_i := z\ \oplus\ \lfloor z / 2^{18}\rfloor$$
 
 $Z_i$ ist eine Zufallszahl.
 
-Bemerkung:
+Bemerkungen:
 
 * Durch die Bitoperationen ist der Algorithmus sehr schnell.
 * Die Parallelisierung ist leicht zu realisieren.
@@ -85,14 +85,28 @@ Bemerkung:
 * Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
 
 ### Mittquadratverfahren
-Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen.  Er wurde 1946 von John von Neumann entwickelt. 
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Wie der Name schon sagt, wird beim Mittquadrateverfahren die mittleren entnommen und quadriert.
 
-* Problem beim Auftauchen der Null
-* Häufige Wiederholungen
-* Verwendung als Hash-Funktion
+$$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
+
+Dabei wird der Initialwert aus $x_n \in \{0,1...,10^8\}$ gewählt, wobei die linke Seite mit $0$len aufgefüllt wird.
+
+Bemerkungen:
+
+* Der Algorithmus hat offensichtlich Probleme mit $x_n = 0$.
+* Die Periodenlänge ist nicht groß.
+* Verwendung als Hash-Funktion.
 * siehe: Shiny app
 
 ### Sonstige
+
+Die folgende Liste enthält weitere gleichverteilte Pseudozufallsgeneratoren.
+
+* Lineare Kongruenzgeneratoren
+* Schieberegister-Generatoren
+* Tausworthe-Generatoren
+* Kombinieren verschiedener Generatoren
+* Inverse Kongruenzgeneratoren
 
 ## Generatoren für sonstige Verteilungen
 Für den Fall, dass 
@@ -222,8 +236,8 @@ Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgener
 
 ## Setzen eines Seeds (optional)
 ```{r}
-library(PPC)
-PP.Coincidence(10)
+#library(PPC)
+#PP.Coincidence(10)
 ```
 
 ## Auswahl der RNG in R
