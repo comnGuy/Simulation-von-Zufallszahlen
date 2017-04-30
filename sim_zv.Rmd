@@ -20,7 +20,7 @@ Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Autom
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
 
 ## Simulation
-<!-- Definition der Zufallsvariable mit dem Buch wiedersprüchlich??? Seite 6-->
+<!-- Definition der Zufallsvariable mit dem Buch wiedersprüchlich??? Seite 6 TODO-->
 ## Zufallsvariablen \& Zufallszahlen
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
 
