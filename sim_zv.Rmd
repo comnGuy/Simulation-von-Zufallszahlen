@@ -221,13 +221,21 @@ Da dieses Kapitel sich mit den statistischen Verfahren befasst, wird zu Beginn d
 
 ### Statistische Anpassungstests
 
-Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es exisitiert eine Zufallsvariable mit einer Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell geprüft wird. 
+Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es exisitiert eine Zufallsexperiment mit einer bestimmten Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell hinreichend genau (typische Werte: $\alpha = 0.05$, $\alpha = 0.01$) geprüft wird. 
+
+Salopp gesagt, wollen wir eine Hypothese aufstellen wie, die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ nähert eine bestimmte Verteilung (z.B. $P_0 := U(0,1)$) an. Um die Hypothese zu überprüfen wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße Zusammen mit den kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert.
+
+\underline{Beispiel}
+
+Hier ein Beispiel mit einer Gleichverteilung
 
 
 # Zufallszahlen in R
 In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt in R ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators einen sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jeden Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. Weitere Informationen können über den folgenden Befehl abgerufen werden.
 
+
 ```{r}
+# Ruft die Help-Page von RNG auf
 #?RNG
 ```
 
@@ -240,7 +248,7 @@ R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
   * Knuth-TAOCP-2002
   * Knuth-TAOCP
   * L'Ecuyer-CMRG
-  * RNGkind() bietet die Möglichkeit einen eigenen Zufallszahlengenerator zu programmieren.
+  * RNGkind() bietet die Möglichkeit einen eigenen Zufallszahlengenerator zu implementieren
 
 ## Auswahl der RNG in R
 
