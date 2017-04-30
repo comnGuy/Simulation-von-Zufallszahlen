@@ -223,11 +223,19 @@ Da dieses Kapitel sich mit den statistischen Verfahren befasst, wird zu Beginn d
 
 Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es exisitiert eine Zufallsexperiment mit einer bestimmten Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell hinreichend genau (typische Werte: $\alpha = 0.05$, $\alpha = 0.01$) geprüft wird. 
 
-Salopp gesagt, wollen wir eine Hypothese aufstellen wie, die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ nähert eine bestimmte Verteilung (z.B. $P_0 := U(0,1)$) an. Um die Hypothese zu überprüfen wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße Zusammen mit den kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert.
+Salopp gesagt, wollen wir eine Hypothese aufstellen wie, die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ nähert eine bestimmte Verteilung (z.B. $P_0 := U(0,1)$) an. Um die Hypothese zu überprüfen wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße Zusammen mit den kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert. <!-- TODO Hier muss noch das Verhätlnis von T(x) und c beschrieben werden -->
 
 \underline{Beispiel}
 
-Hier ein Beispiel mit einer Gleichverteilung
+Angenommen es existiert eine Stichprobe eines Zufallsgenerators $x = (u_0,...,u_{n-1} \in [0,1]^n$ und eine Gleichverteilung $U(0,1)$. Demnach lautet die Hypothese
+
+$$H = \{P_x = U(0,1)\}.$$
+
+Um die Hypothese in Worten zu fassen:"Die Zufallsvariable $x$ kann durch die Gleichverteilung $U(0,1)$ beschrieben werden.". Angenommen Test $(T, c)$ mit einem Testniveau von $\alpha = 0.01$ gilt. Sollte die Situation $T(x) > c$ eintreten, wird die Hypothese abgelehnt. Dies bedeutet, dass die gegebene Stichprobe nicht zu $U(0,1)$ passt.
+
+Wird dieser Test mit i.i.d von dem Zufallsgenerator von $x$ wiederholt, entsteht eine fehlerhafte Ablehnung des Generators von $\alpha \cdot 100 = 100\%$ der Fälle.
+
+Tritt der Fall $T(x) \le c$, zeigt das lediglich, dass die gegebenen Zufallszahlen $x$ der Gleichverteilung $U(0,1)$ ähnlich sind. Das bedeutet aber nicht, dass der Zufallsgenerator $U(0,1)$ ist, da die Fehlerwahrscheinlichkeit sehr hoch ist.
 
 
 # Zufallszahlen in R
