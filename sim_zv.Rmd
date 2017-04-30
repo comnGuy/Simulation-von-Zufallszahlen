@@ -13,14 +13,14 @@ output:
 
 \newpage
 # Motiviation
-Zufallszahlen spielen eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereingissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
+Zufallszahlen spielen eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereignissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
 Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Automat) stellt allerdings eine besondere Herausforderung dar, da jede Operation durch die Vorherige definiert wird und daher (theoretisch) berechenbar ist.
 
 # Definitionen
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
 
 ## Simulation
-In einigen Situation besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen System nicht möglich ist. Demnach ist eine Simulation ist eine Experiment an einem Modell. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
+In einigen Situationen besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem Modell. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
 
 Beispiele für (Hardware)Simulationen:
 
@@ -28,17 +28,17 @@ Beispiele für (Hardware)Simulationen:
 * Ein Windkanal simuliert die Geschwindigkeit
 * Hochregallager
 
-Diese Simulationen sind meistens nur für einen oder wenige Fälle konzipiert. In unserem Fall wird jedoch die Rechnersimulation verwendet, die durch ein reduziertes mathematisches Modell versucht reale Problemstellung abzubilden.
+Diese Simulationen sind meistens nur für wenige Fälle konzipiert. In unserem Fall wird jedoch die Rechnersimulation verwendet, die durch ein reduziertes mathematisches Modell versucht eine reale Problemstellung abzubilden.
 
 <!-- Definition der Zufallsvariable mit dem Buch wiedersprüchlich??? Seite 6 TODO-->
 ## Zufallsvariablen \& Zufallszahlen
-Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
+Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnisses ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einem Kleinbuchstaben $x$ betitelt.
 
 ## Gleichverteilung
 Der Grund für dieses Kapitel ist, dass ein großer Teil der Zufallsgeneratoren gleichverteilt sind. In diesem Beitrag wird die \textbf{Gleichverteilung} $U(0,1)$ mit dem Intervall $(0,1)$ behandelt. Die Folge von Zufallsvariablen $(x_m)_{m\ge1}$ sind iid. Der Begriff \textbf{Iid} ist die Abkürzung für die Unabhängig und identisch verteilte Folge von Zufallsvariablen. Das bedeutet, dass die Zufallsvariablen die gleiche verteilte Folge besitzen, dennoch alle unabhängig voneinander sind.
 
 ## Nichtdeterministische \& deterministische Zufallsgeneratoren
-Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nicht realisieren. Eine Möglichkeit dieses Problem zu lösen ist es bestimmte physikalische Prinzipien miteinzubeziehen. Durch deren gegebene Zufälligkeit lassen sich Funktionen erstellen, die zu ebenso zufälligen Ergebnissen führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministische Zufallsgenerator} genannt.\newline
+Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nicht realisieren. Eine Möglichkeit dieses Problem zu lösen ist es bestimmte physikalische Prinzipien miteinzubeziehen. Durch deren gegebene Zufälligkeit lassen sich Funktionen erstellen, die zu ebenso zufälligen Ergebnissen führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministischen Zufallsgeneratoren} genannt.\newline
 
 Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte messen kann. Unter anderem: 
 
