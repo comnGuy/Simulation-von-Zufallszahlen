@@ -215,6 +215,13 @@ Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgener
 
 ## Statistische Gütekriterien
 
+Wie in den analytischen Untersuchungen werden in der statistischen Herangehensweise die Ergebnisse der Generatoren betrachtet. Der Unterschied zu den analytischen Kriterien ist, dass die statistischen Untersuchungen auf jeden Generator und die meisten Gütekriterien anwendbar sind.
+
+Da dieses Kapitel sich mit den statistischen Verfahren befasst, wird zu Beginn der Anpassungstest eingeführt.
+
+### Statistische Anpassungstests
+
+Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es exisitiert eine Zufallsvariable mit einer Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell geprüft wird. 
 
 
 # Zufallszahlen in R
