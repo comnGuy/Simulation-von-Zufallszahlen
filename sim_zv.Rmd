@@ -235,6 +235,33 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
 
 Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgeneratoren. Zwischen $x$ und $y$ sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $y$ möglichst unabhängig von seiner Position $x$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Flächen sehen gleichmäßig aus.
 
+### Der Spaktraltest
+
+```{r, echo=FALSE}
+
+numberOfRandomNumbers <- 10000
+
+#RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
+#datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
+
+dataTest <- data.frame(dataX = datamt[seq(1, 3333, 3),]$data, 
+                       dataY = datamt[seq(2, 3333, 3),]$data, 
+                       dataZ = datamt[seq(3, 3333, 3),]$data)
+
+
+library(scatterplot3d)
+with(dataTest, {
+   s3d <- scatterplot3d(dataX, dataY, dataZ, # x,y, z axis
+                 main="3-D Scatterplot - StudierendeEDA2016.csv",
+                 box=FALSE,
+                 #type="h",
+                 color="#999999",
+                 pch = 16)
+   
+   s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ)
+})
+```
+
 ## Statistische Gütekriterien
 
 Wie in den analytischen Untersuchungen werden in der statistischen Herangehensweise die Ergebnisse der Generatoren betrachtet. Der Unterschied zu den analytischen Kriterien ist, dass die statistischen Untersuchungen auf jeden Generator und die meisten Gütekriterien anwendbar sind.
