@@ -20,7 +20,7 @@ Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Autom
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
 
 ## Simulation
-In einigen Situationen besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem Modell. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
+In einigen Situationen besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem meist stark vereinfachte Modell der Realität. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
 
 Beispiele für (Hardware)Simulationen:
 
@@ -73,7 +73,7 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 > Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
 
-Alle Pseudozufallsgeneratoren kommen an einer Position an, wo sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
+Alle Pseudozufallsgeneratoren kommen an einer Position an, inder sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
