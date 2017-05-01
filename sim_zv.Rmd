@@ -37,6 +37,11 @@ Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eine
 ## Gleichverteilung
 Der Grund für dieses Kapitel ist, dass ein großer Teil der Zufallsgeneratoren gleichverteilt sind. In diesem Beitrag wird die \textbf{Gleichverteilung} $U(0,1)$ mit dem Intervall $(0,1)$ behandelt. Die Folge von Zufallsvariablen $(x_m)_{m\ge1}$ sind iid. Der Begriff \textbf{Iid} ist die Abkürzung für die unabhängig und identisch verteilte Folge von Zufallsvariablen. Das bedeutet, dass die Zufallsvariablen die gleiche verteilte Folge besitzen, dennoch alle unabhängig voneinander sind.
 
+Beispiele für Zufallsexperimente mit einer Gleichverteilung sind die folgenden:
+
+* Ein oder mehrere Würfe mit einem fairer Würfel beinhaltet nach jedem Wurf die gleiche Wahrscheinlichkeit $P(X = x) = \dfrac{1}{6}$.
+* Ein oder mehrere Würfe mit einer Münze mit $P(X = x) = \dfrac{1}{2}$
+
 ## Nichtdeterministische \& deterministische Zufallsgeneratoren
 Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nicht realisieren. Eine Möglichkeit dieses Problem zu lösen ist es bestimmte physikalische Prinzipien miteinzubeziehen. Durch deren gegebene Zufälligkeit lassen sich Funktionen erstellen, die zu ebenso zufälligen Ergebnissen führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministischen Zufallsgeneratoren} genannt.\newline
 
