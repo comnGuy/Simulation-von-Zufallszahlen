@@ -13,19 +13,37 @@ output:
 
 \newpage
 # Motiviation
-Zufallszahlen spielen eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereingissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
+Zufallszahlen spielen eine wichtige Rolle in Wissenschaft, Technik und Industrie. Sie werden beispielsweise in der Kryptographie bei der Wahl eines Schlüssels, bei Computersimulationen zur Erzeugung von unvorhergesehenen Ereignissen oder in der statistischen Analyse bei der Auswahl von Stichproben benutzt.  
 Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Automat) stellt allerdings eine besondere Herausforderung dar, da jede Operation durch die Vorherige definiert wird und daher (theoretisch) berechenbar ist.
 
 # Definitionen
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
 
 ## Simulation
+In einigen Situationen besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem Modell. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
 
+Beispiele für (Hardware)Simulationen:
+
+* Flugzeugsimulator
+* Ein Windkanal simuliert die Geschwindigkeit
+* Hochregallager
+
+Diese Simulationen sind meistens nur für wenige Fälle konzipiert. In unserem Fall wird jedoch die Rechnersimulation verwendet, die durch ein reduziertes mathematisches Modell versucht eine reale Problemstellung abzubilden.
+
+<!-- Definition der Zufallsvariable mit dem Buch wiedersprüchlich??? Seite 6 TODO-->
 ## Zufallsvariablen \& Zufallszahlen
-Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnis ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einen Kleinbuchstaben $x$ betitelt.
+Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnisses ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einem Kleinbuchstaben $x$ betitelt.
+
+## Gleichverteilung
+Der Grund für dieses Kapitel ist, dass ein großer Teil der Zufallsgeneratoren gleichverteilt sind. In diesem Beitrag wird die \textbf{Gleichverteilung} $U(0,1)$ mit dem Intervall $(0,1)$ behandelt. Die Folge von Zufallsvariablen $(x_m)_{m\ge1}$ sind iid. Der Begriff \textbf{Iid} ist die Abkürzung für die unabhängig und identisch verteilte Folge von Zufallsvariablen. Das bedeutet, dass die Zufallsvariablen die gleiche verteilte Folge besitzen, dennoch alle unabhängig voneinander sind.
+
+Beispiele für Zufallsexperimente mit einer Gleichverteilung sind die folgenden:
+
+* Ein oder mehrere Würfe mit einem fairer Würfel beinhaltet nach jedem Wurf die gleiche Wahrscheinlichkeit $P(X = x) = \dfrac{1}{6}$.
+* Ein oder mehrere Würfe mit einer Münze mit $P(X = x) = \dfrac{1}{2}$
 
 ## Nichtdeterministische \& deterministische Zufallsgeneratoren
-Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nicht realisieren. Eine Möglichkeit dieses Problem zu lösen ist es bestimmte physikalische Prinzipien miteinzubeziehen. Durch deren gegebene Zufälligkeit lassen sich Funktionen erstellen, die zu ebenso zufälligen Ergebnissen führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministische Zufallsgenerator} genannt.\newline
+Das Ergebnis eines Algorithmus verändert sich bei gleichbleibenden Eingaben nicht. Demnach lässt sich eine komplett zufällige Funktion rein durch Software nicht realisieren. Eine Möglichkeit dieses Problem zu lösen ist es bestimmte physikalische Prinzipien miteinzubeziehen. Durch deren gegebene Zufälligkeit lassen sich Funktionen erstellen, die zu ebenso zufälligen Ergebnissen führen. Dieses Prinzip nennt sich \emph{Nichtdeterminismus} und diese Art von Generatoren werden die \textbf{nichtdeterministischen Zufallsgeneratoren} genannt.\newline
 
 Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte messen kann. Unter anderem: 
 
@@ -41,13 +59,13 @@ Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte mes
 	\label{fig2}
 \end{figure}
 
-Allerdings müssen physikalische Beobachtunge (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten
+Allerdings müssen physikalische Beobachtungen (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten.
 
 Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \textbf{Pseudozufallszahlen} genannt.
 
 # Erzeugen von (Pseudo)Zufallszahlen
 
-Bevor mit dem Bau eines deterministischer Zufallsgenerators begonnen wird, stellt sich die Frage, welches Ziel ein solcher Zufallsgenerator erfüllen soll. Umgangsprachlich kann ein Ziel für die Simulation von Zufallszahlen auf einen Rechner folglich definiert werden:
+Bevor mit dem Bau eines deterministischen Zufallsgenerators begonnen wird, stellt sich die Frage, welches Ziel ein solcher Zufallsgenerator erfüllen soll. Umgangsprachlich kann ein Ziel für die Simulation von Zufallszahlen auf einen Rechner folglich definiert werden:
 
 > \textbf{"... ein auf einem Rechner ablauffähiges Zufallsexperiment zu erhalten, ..."}, Michael Kolonk
 
@@ -55,19 +73,58 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 > Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
 
+Alle Pseudozufallsgeneratoren kommen an einer Position an, wo sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
+
 ## Generatoren für gleichverteilte Zufallszahlen
 
+### Mersenne-Twister
+Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
+Der \textbf{Algorithmus} startet mit $N = 624$ verschiedene Wörter, die mit $Y_1\ ...\ Y_N$ bezeichnet werden. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator generiert werden. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Sind die Initialwörter gewählt, berechnet der Mersenne-Twister die weiteren Pseudzufallszahlen wie folgt.
+
+$$h := Y_{i-N} - Y_{i-N}\ mod\ 2^{31} + Y_{i-N+1}\ mod\ 2^{31}$$
+$$Y_i := Y_{i-227}\ \oplus \lfloor h/2 \rfloor\ \oplus\ ((h mod 2)\ \cdot\ 9908B0DF_{hex})$$
+
+Weiterhin wird durch die nächsten Formeln die Gleichverteilung sichergegestellt.
+
+$$x := Y_i\ \oplus\ \lfloor Y_i / 2^{11}\rfloor$$
+$$y := x\ \oplus\ ((x\ \cdot\ 2^7)\ \wedge\ 9D2C5680_{hex}$$
+$$z := y\ \oplus\ ((y\ \cdot\ 2^15)\ \wedge\ EFC60000_{hex}$$
+$$Z_i := z\ \oplus\ \lfloor z / 2^{18}\rfloor$$
+
+$Z_i$ ist eine Zufallszahl.
+
+Bemerkungen:
+
+* Durch die Bitoperationen ist der Algorithmus sehr schnell.
+* Die Parallelisierung ist leicht zu realisieren.
+* Der Generator benötigt ca. 2,5 kByte, welches auf kleineren Systemen mit wenig Cache zu Performanceeinbußen kommt.
+* Der Mersenne-Twister wird in R als Standardpseudozufallszahlengenerator benutzt.
+* Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
 
 ### Mittquadratverfahren
-Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen.  Er wurde 1946 von John von Neumann entwickelt. 
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Wie der Name schon sagt, wird beim Mittquadrateverfahren die Mittleren entnommen und quadriert.
 
-* Problem beim Auftauchen der Null
-* Häufige Wiederholungen
-* Verwendung als Hash-Funktion
+$$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
+
+Dabei wird der Initialwert aus $x_n \in \{0,1...,10^8\}$ gewählt, wobei die linke Seite mit $0$len aufgefüllt wird.
+
+Bemerkungen:
+
+* Der Algorithmus hat offensichtlich Probleme mit $x_n = 0$.
+* Die Periodenlänge ist nicht groß.
+* Verwendung als Hash-Funktion.
 * siehe: Shiny app
 
 ### Sonstige
+
+Die folgende Liste enthält weitere gleichverteilte Pseudozufallsgeneratoren.
+
+* Lineare Kongruenzgeneratoren
+* Schieberegister-Generatoren
+* Tausworthe-Generatoren
+* Kombinieren verschiedener Generatoren
+* Inverse Kongruenzgeneratoren
 
 ## Generatoren für sonstige Verteilungen
 Für den Fall, dass 
@@ -104,22 +161,26 @@ Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generato
 
 * \textbf{Kompositionsmethode}: 
 
-# Güte eines Zufallszahlengenerators
-Stell dir vor, du hast eben einen Zufallsgenerator kreiert und möchtest wissen, wie dieser im Gegensatz zu den bereits bestehenden Generatoren performt. Du möchstest demnach die Güte (Qualität) deines Zufallsgenerators beurteilen können. Michael Kolonk unterteilt dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
+# Güte eines Zufallszahlengenerators 
+<!-- TODO -->
+Doch wie gut performen die im vorigen Kapitel vorgestellten Pseudzufallsgeneratoren wirklich? In diesem Kapitel werden unterschiedliche Gütekriterien (Qualität) der Zufallsgeneratoren vorgestellt. Michael Kolonk unterteilt in seinem Buch dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
 ## Analytische Gütekriterien
-Im Gegensatz zu den statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen.
+Im Gegensatz zu dem statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen. Das Modell sieht wie folgt aus.
 
-Einer dieser vergleichbaren Eigenschaften kann die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über ein stimmen. Sei $(X_n){n\ge0}$ eine Folge von Zufallsvariablen mit den Werten in $[0,1]$. $(X_n){n\ge0}$ ist i.i.d mit der Verteilung $U(0,1)$, falls fir alle $d \in \mathbb{N}$ und alle $0 \le a_i \le b_i \le 1, i = 0,...,d-1$, gilt
+$$iid (X_n)_{n\ge0} \sim U(0,1)$$
+<!-- TODO nochmal erklären was das Modell bedeutet -->
+Einer dieser vergleichbaren Eigenschaften ist die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X_{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über einstimmen. Sei $(X_n)_{n\ge0}$ eine Folge von Zufallsvariablen mit den Werten in $[0,1]$. $(X_n)_{n\ge0}$ ist i.i.d mit der Verteilung $U(0,1)$, falls für $d \in \mathbb{N}$ und alle $0 \le a_i \le b_i \le 1, i = 0,...,d-1$, gilt
 
 $$ P(a_i < X_i \le b_i, i = 0,...,d-1) = \prod_{i=0}^{d-1}(b_i-a_i)$$
-Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlich Gebiete empirisch und analytisch. Die \textbf{empirische Unterschung} nimmt ein bestehendes mathemathisches Modell an und überprüft, ob die beobachteten Ereignisse von Zufallszahlen mit den mathematischen Modell zusammen passt. Dabei besteht die Möglichkeit diese Untersuchung graphisch oder statistisch durchzuführen. Folgende Einschrunkungen muss die die empirischen Untersuchung hinnehmen.
+<!-- Würde die Formel rausnehmen inkl. deren Erklärung? TODO-->
+Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlichen Gebiete empirisch und analytisch. Die \textbf{empirische Untersuchung} nimmt ein bestehendes mathematisches Modell an und überprüft, ob die beobachteten Ereignisse von Zufallszahlen mit dem mathematischen Modell zusammenpasst. Dabei besteht die Möglichkeit diese Untersuchung graphisch oder statistisch durchzuführen. Folgende Einschränkungen muss die die empirische Untersuchung hinnehmen.
 
 * Es besteht nur die Möglichkeit endlich viele Bedingungen zu überprüfen 
 * Die obere Foderung ist zu stark und kann nur approximiert werden
-<!-- Hier gibt es noch eine weitere Einschränkung -->
+<!-- Hier gibt es noch eine weitere Einschränkung TODO -->
 
-Die \textbf{analytische Untersuchung} versucht die Gütes des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
+Die \textbf{analytische Untersuchung} versucht die Güte des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
 
 ### d-gleichverteilte Folgen
 Wie im vorigen Kapitel angesprochen, kann nur eine endliche Zahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden kann. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. 
@@ -138,7 +199,7 @@ Jetzt gilt die vorgeschlagenen Bedingungen anhand von graphischen Mitteln zu unt
 
 Der \textbf{Mersenne-Twister} arbeitet mit einer Periodenlänge von $p = 2^{19937} - 1$. Wie der Name schon sagt, ist das eine Mersenne-Prinzahl. Der Pseudozufallszahlengenerator \textbf{Super-Duper} wurde in den 70ger Jahren erfunden und arbeitet mit einer Periodenlänge von $p = 6*10^{18}$. Als dritten Generator wurde der \textbf{Wichmann-Hill} verwendet. Er generiert Zufallszahlen mit einer Periodenlänge von mehr als $6.95 * 10^{12}$.
 
-Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich große Teilintervalle $I_0,...,I_{31}$. Durch die Unterteilung besteht die Möglichkeit die Anzahl der Vorkommnisse in jeden Teilintervall mit der Formel
+Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich große Teilintervalle $I_0,...,I_{31}$. Durch die Unterteilung besteht die Möglichkeit die Anzahl der Vorkommnisse in jedem Teilintervall mit der Formel
 $$h_i := \displaystyle\sum_{n=0}^{N-1} 1_{I_i}(u_n)$$
 zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfrac{h_i}{N}$ bestimmt werden.
 
@@ -164,18 +225,15 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
-  x = "Generierte 100000 Zufallszahlen (32er Bins)",
+  x = "Generierte 10000 Zufallszahlen (32er Bins)",
   y = "Anzahl der Zufallszahlen pro Bin")
 ```
 
-Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 100000$ Zahlen pro Generator in einem Histrogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 3.125$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
+Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 10000$ Zahlen pro Generator in einem Histogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 312,5$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
 
 Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
 
 ```{r, echo=FALSE}
-RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
-datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
-
 ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) + 
   geom_point(size = 0.01) +
   facet_grid(~ KindOfRandom) +
@@ -183,41 +241,84 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
         legend.position = "bottom",
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren als Plot",
-  x = "Anzahl der Zufallszahlen",
+  x = "Zufallszahlen",
   y = "Spannweite des Zufallsgenerators")
 ```
 
+Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgeneratoren. Zwischen $x$ und $y$ sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $y$ möglichst unabhängig von seiner Position $x$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Flächen sehen gleichmäßig aus.
+
 ## Statistische Gütekriterien
 
+Wie in den analytischen Untersuchungen werden in der statistischen Herangehensweise die Ergebnisse der Generatoren betrachtet. Der Unterschied zu den analytischen Kriterien ist, dass die statistischen Untersuchungen auf jeden Generator und die meisten Gütekriterien anwendbar sind.
+
+Da dieses Kapitel sich mit den statistischen Verfahren befasst, wird zu Beginn der Anpassungstest eingeführt.
+
+### Statistische Anpassungstests
+
+Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es existiert ein Zufallsexperiment mit einer bestimmten Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell hinreichend genau (typische Werte: $\alpha = 0.05$, $\alpha = 0.01$) geprüft wird. 
+
+Salopp gesagt soll eine Hypothese aufgestellt werden, die die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ nähert eine bestimmte Verteilung (z. B. $P_0 := U(0,1)$) an. Um die Hypothese zu überprüfen, wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße zusammen mit dem kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert. <!-- TODO Hier muss noch das Verhätlnis von T(x) und c beschrieben werden -->
+
+\underline{Beispiel}
+
+Angenommen es existiert eine Stichprobe eines Zufallsgenerators $x = (u_0,...,u_{n-1} \in [0,1]^n$ und eine Gleichverteilung $U(0,1)$. Demnach lautet die Hypothese
+
+$$H = \{P_x = U(0,1)\}.$$
+
+Um die Hypothese in Worten zu fassen:"Die Zufallsvariable $x$ kann durch die Gleichverteilung $U(0,1)$ beschrieben werden.". Angenommen Test $(T, c)$ mit einem Testniveau von $\alpha = 0.01$ gilt. Sollte die Situation $T(x) > c$ eintreten, wird die Hypothese abgelehnt. Dies bedeutet, dass die gegebene Stichprobe nicht zu $U(0,1)$ passt.
+
+Wird dieser Test mit i.i.d von dem Zufallsgenerator von $x$ wiederholt, entsteht eine fehlerhafte Ablehnung des Generators von $\alpha \cdot 100 = 100\%$ der Fälle.
+
+Tritt der Fall $T(x) \le c$, zeigt das lediglich, dass die gegebenen Zufallszahlen $x$ der Gleichverteilung $U(0,1)$ ähnlich sind. Das bedeutet aber nicht, dass der Zufallsgenerator $U(0,1)$ ist, da die Fehlerwahrscheinlichkeit sehr hoch ist.
 
 
 # Zufallszahlen in R
-* Die Statistik-software R enthält mehrere Generatoren für Zufallszahlen
-* R's random number generator.
-* Setzen von Seeds
+In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt in R ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators einem sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jedem Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. Weitere Informationen können über den folgenden Befehl abgerufen werden.
+
+
 ```{r}
+# Ruft die Help-Page von RNG auf
 #?RNG
 ```
-* Verschiedene Methoden zur Auswahl
-    + Wichmann-Hill
-    + Marsaglia-Multicarry
-    + Super-Duper
-    + Marsenne-Twister
-    + Knuth-TAOCP-2002
-    + Knuth-TAOCP
-    + L'Ecuyer-CMRG
-    + Eigene
 
-## Setzen eines Seeds (optional)
-```{r}
-```
+R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
+
+  * Wichmann-Hill
+  * Marsaglia-Multicarry
+  * Super-Duper
+  * Marsenne-Twister
+  * Knuth-TAOCP-2002
+  * Knuth-TAOCP
+  * L'Ecuyer-CMRG
+  * RNGkind() bietet die Möglichkeit einen eigenen Zufallszahlengenerator zu implementieren
 
 ## Auswahl der RNG in R
 
-```{r}
-# insert random R-code
-# 
+```{r results='hide'}
+# RNGkind setzt den Pseudozufallsgenerator
+# Setzt den Zufallsgenerator auf L'Ecuyer-CMRG
+RNGkind("L'Ecuyer-CMRG")
+
+# Gibt den aktuellen Zufallsgenerator aus
+RNGkind()
+
+# Setzt den Zufallsgenerator auf Mersenne-Twister (default)
+RNGkind("Mersenne-Twister")
 ```
+
+## Setzen eines Seeds (optional)
+```{r results='hide'}
+# Setzt den Seed auf 123456789 für genau den nächsten Aufruf
+set.seed(123456789)
+
+# Generiert immer die selben 10 Zufallszahlen wegen den seed.
+runif(10)
+
+# Generiert 10 Zufallszahlen ohne Seed
+runif(10)
+```
+
+
 
 ## Eigene RNG
 ### PP-Coincidence
@@ -258,7 +359,8 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
 
 [2] Severin Schürz http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Schuerz-RNG.pdf
 
-[3] Stochastische Simulation
+[3] Michael Kolonk, Stochastische Simulation
 
+[4] Makoto Matsumoto, Twisted GFSR Generators, http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/tgfsr3.pdf
 
-
+[5] Makoto Matsumoto, Mersenne Twister, http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/mt.pdf
