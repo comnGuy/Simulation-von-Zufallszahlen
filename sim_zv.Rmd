@@ -77,6 +77,22 @@ Alle Pseudozufallsgeneratoren kommen an einer Position an, wo sich die pseudo zu
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
+### Mittquadratverfahren
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist einer der ältesten und vergleichsweise einfachsten Algorithmen zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Bei dieser Methode wird ein beliebiger achtstelliger Initialwert $x_n \in \{0,1...,10^8\}$ (meistens die Uhrzeit) genommen und die Quadrate der beiden mittleren Stellen miteinander multipliziert.
+
+Die weiteren Schritte können mit 
+$$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
+rekursiv immer weiter gebildet werden.
+
+
+Bemerkungen:
+
+* Inzwischen ist bewiesen, dass der Algorithmus, unabhängig des Startwertes, gegen 0 konvergiert.
+* Der Algorithmus hat offensichtlich Probleme mit $x_n = 0$.
+* Die Periodenlänge ist nicht groß.
+* Verwendung als Hash-Funktion.
+* Bsp. siehe: Shiny app
+
 ### Mersenne-Twister
 Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
@@ -102,57 +118,52 @@ Bemerkungen:
 * Der Mersenne-Twister wird in R als Standardpseudozufallszahlengenerator benutzt.
 * Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
 
-### Mittquadratverfahren
-Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist ein einfacher Algorithmus zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Wie der Name schon sagt, wird beim Mittquadrateverfahren die Mittleren entnommen und quadriert.
-
-$$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
-
-Dabei wird der Initialwert aus $x_n \in \{0,1...,10^8\}$ gewählt, wobei die linke Seite mit $0$len aufgefüllt wird.
-
-Bemerkungen:
-
-* Der Algorithmus hat offensichtlich Probleme mit $x_n = 0$.
-* Die Periodenlänge ist nicht groß.
-* Verwendung als Hash-Funktion.
-* siehe: Shiny app
 
 ### Sonstige
 
 Die folgende Liste enthält weitere gleichverteilte Pseudozufallsgeneratoren.
 
-* Lineare Kongruenzgeneratoren
-* Schieberegister-Generatoren
-* Tausworthe-Generatoren
-* Kombinieren verschiedener Generatoren
-* Inverse Kongruenzgeneratoren
+* \textbf{Lineare Kongruenzgeneratoren}
+* \textbf{Schieberegister-Generatoren}
+* \textbf{Tausworthe-Generatoren}
+* \textbf{Kombinieren verschiedener Generatoren}
+* \textbf{Inverse Kongruenzgeneratoren}
 
 ## Generatoren für sonstige Verteilungen
-Für den Fall, dass 
 
 ### Inversionsmethode
-Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} lassen sich (fast) beliebige diskrete und stetige Wahrscheinlichkeitsverteilungen aus gleichverteilten Zufallszahlen erzeugen. Diesem Generator liegt das \textbf{Simulationslemma} zugrunde, das besagt, dass 
+Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} lassen sich Zufallszahlen (fast) beliebiger diskreter und stetiger Wahrscheinlichkeitsverteilungen erzeugen. Diesem Generator liegt das Prinzip zugrunde, dass sich aus gleichverteilten Zufallsvariablen auch welche anderer Verteilungen generieren lassen (\textbf{Inversionsprinzip}).
 
+Es sei $F$ eine Verteilungsfunktion und $U$ eine $U(0,1)$-verteilte Zufallsvariable. Dann gilt: Die allgemeine Inverse $Y:=F^{-1}(U)$ hat die Verteilungsfunktion $F$ d.h. $$P(Y \leq t)=F(t), t\in \mathbb{R}$$
 
-\emph{Stetige Verteilungen}
-
-\emph{Diskrete Verteilungen}
-
+Mit $F^{-1}(r)$ als Funktion `FhochMinusEins(r)` kann nun aus einer gleichverteilten Zufallszahl eine mit einer bestimmer Verteilung.
+```{}
+double FRandGen() {
+  return FhochMinusEins(RandGen());
+}
+```
+Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei Normalverteilung) nicht effizient berechnen lässt.
 
 \emph{Beispiel:} Simulation der Exponentialverteilung $exp(\alpha)$
 
 Die Exponentialverteilung ist mit der Verteilungsfunktion $$F(t)=1-e^{-\lambda e}$$ mit $t>0$ definiert.
 Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}ln(1-y)$$. 
 
-```{r, echo=FALSE}
+```{r, fig.align=center, echo=FALSE}
 # Plot der exponentialfunktions.
 library(ggplot2)
-
-#ggplot(f, aes(x=f)) +
-#  geom_line() + 
-#  labs(title="Die Exponentialfunktion mit Umkehrfunktion")
+data <- data.frame(x=seq(1:100), y=exp(seq(1:100)))
+ggplot(data=data, aes(x=data$x, y=data$y))+
+  geom_line() +
+  labs(title="Exponentialfunktion mit Inverse")
 ```
 
-Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei Normalverteilung) nicht effizient berechnen lässt.
+
+Bemerkungen:
+
+* 
+* 
+* 
 
 ### Sonstige Methoden
 Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
@@ -162,7 +173,6 @@ Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generato
 * \textbf{Kompositionsmethode}: 
 
 # Güte eines Zufallszahlengenerators 
-<!-- TODO -->
 Doch wie gut performen die im vorigen Kapitel vorgestellten Pseudzufallsgeneratoren wirklich? In diesem Kapitel werden unterschiedliche Gütekriterien (Qualität) der Zufallsgeneratoren vorgestellt. Michael Kolonk unterteilt in seinem Buch dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
 
 ## Analytische Gütekriterien
@@ -319,8 +329,9 @@ runif(10)
 ```
 
 
-
 ## Eigene RNG
+
+
 ### PP-Coincidence
 ```{r, echo=FALSE}
 #options(expressions=100000)
