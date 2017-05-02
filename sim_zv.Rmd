@@ -148,7 +148,7 @@ Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}
 
 ```{r, echo=FALSE}
 # Plot der exponentialfunktions.
-library(ggplot2)
+#library(ggplot2)
 #data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
 #data2 <- data.frame(x=seq(1:25), y=seq(1:25))
 #ggplot() +
@@ -160,9 +160,6 @@ library(ggplot2)
 
 Bemerkungen:
 
-* 
-* 
-* 
 
 ### Sonstige Methoden
 Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
@@ -316,7 +313,7 @@ In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür v
 
 ```{r}
 # Ruft die Help-Page von RNG auf
-#?RNG
+?RNG
 ```
 
 R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
@@ -359,6 +356,7 @@ runif(10)
 
 ## Eigene RNG
 
+Neben den R-Standard Zufallsgeneratoren, gibt es auch die Möglichkeit eigene Funktionen zu benutzen.
 
 ### PP-Coincidence
 Der PP-Coincidence wurde im Zuge eines Praktikums im Fach Computational Statistics entwickelt. Der Algorithmus lässt sich wie folgt darstellen.
@@ -396,7 +394,30 @@ PP.Coincidence <- function(numberOfRandomNumbers){
 PP.Coincidence(5)
 
 ```
-## Prüfung auf Unabhängigkeit der Zufallszahlen
+## Prüfung der Güte von Zufallszahlen
+Wie im oberen Kapitel beschrieben, kann die Güte der Zufallsverteilungen in R graphisch gut dargestellt werden.
+
+```{r results='hide'}
+# Graphische Prüfung auf Gleichverteilung
+ggplot(data, aes(x = data)) + 
+  geom_histogram(bins = 32) + 
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Histogramm",
+  x = "Generierte 10000 Zufallszahlen (32er Bins)",
+  y = "Anzahl der Zufallszahlen pro Bin")
+
+ggplot(data, aes(y = data, x = pos)) + 
+  geom_point(size = 0.01) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Plot",
+  x = "Zufallszahlen",
+  y = "Spannweite des Zufallsgenerators")
+```
+
 
 
 # Quellen
