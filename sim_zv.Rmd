@@ -149,12 +149,12 @@ Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}
 ```{r, echo=FALSE}
 # Plot der exponentialfunktions.
 library(ggplot2)
-data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
-data2 <- data.frame(x=seq(1:25), y=seq(1:25))
-ggplot() +
-  geom_line(data=data, aes(x=data$x, y=data$y)) +
-  geom_line(data=data2, aes(x=data2$x, y=data2$y)) + 
-  labs(title="Exponentialfunktion mit Inverse")
+#data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
+#data2 <- data.frame(x=seq(1:25), y=seq(1:25))
+#ggplot() +
+#  geom_line(data=data, aes(x=data$x, y=data$y)) +
+#  geom_line(data=data2, aes(x=data2$x, y=data2$y)) + 
+#  labs(title="Exponentialfunktion mit Inverse")
 ```
 
 
@@ -169,7 +169,7 @@ Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generato
 
 * \textbf{Verwerfungsmethode (engl.: Rejection sampling)}: Alternative zur Inversionsmethode, für Wahrscheinlichkeitsverteilungen, die zu komplex zu berechnen sind.
 
-* \textbf{Kompositionsmethode}: 
+* \textbf{Kompositionsmethode}: Ein Verfahren, das eine zusammengesetzte Mischung aus verschiedenen Verteilungen simuliert.
 
 # Güte eines Zufallszahlengenerators 
 Doch wie gut performen die im vorigen Kapitel vorgestellten Pseudzufallsgeneratoren wirklich? In diesem Kapitel werden unterschiedliche Gütekriterien (Qualität) der Zufallsgeneratoren vorgestellt. Michael Kolonk unterteilt in seinem Buch dieses große Gebiet in die zwei Kriterien das \textbf{analytische Gütekriterium} und das \textbf{statistische Gütekriterium}.
