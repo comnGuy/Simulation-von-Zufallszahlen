@@ -397,7 +397,7 @@ PP.Coincidence(5)
 ## Prüfung der Güte von Zufallszahlen
 Wie im oberen Kapitel beschrieben, kann die Güte der Zufallsverteilungen in R graphisch gut dargestellt werden.
 
-```{r results='hide'}
+```{r, eval=FALSE, results='hide'}
 # Graphische Prüfung auf Gleichverteilung
 ggplot(data, aes(x = data)) + 
   geom_histogram(bins = 32) + 
