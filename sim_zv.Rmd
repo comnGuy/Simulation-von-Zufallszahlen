@@ -179,10 +179,7 @@ Im Gegensatz zu dem statistischen Gütekriterium macht das \textbf{analytische G
 
 $$iid (X_n)_{n\ge0} \sim U(0,1)$$
 <!-- TODO nochmal erklären was das Modell bedeutet -->
-Einer dieser vergleichbaren Eigenschaften ist die Überprüfung auf die Gleichverteilung sein. Dabei wird die Verteilung $X_0,...,X_{d-1}$ für alle $d \ge 1$ mit der Gleichverteilung $[0,1]^d$ verglichen und sollte bestmöglich über einstimmen. Sei $(X_n)_{n\ge0}$ eine Folge von Zufallsvariablen mit den Werten in $[0,1]$. $(X_n)_{n\ge0}$ ist i.i.d mit der Verteilung $U(0,1)$, falls für $d \in \mathbb{N}$ und alle $0 \le a_i \le b_i \le 1, i = 0,...,d-1$, gilt
 
-$$ P(a_i < X_i \le b_i, i = 0,...,d-1) = \prod_{i=0}^{d-1}(b_i-a_i)$$
-<!-- Würde die Formel rausnehmen inkl. deren Erklärung? TODO-->
 Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlichen Gebiete empirisch und analytisch. Die \textbf{empirische Untersuchung} nimmt ein bestehendes mathematisches Modell an und überprüft, ob die beobachteten Ereignisse von Zufallszahlen mit dem mathematischen Modell zusammenpasst. Dabei besteht die Möglichkeit diese Untersuchung graphisch oder statistisch durchzuführen. Folgende Einschränkungen muss die die empirische Untersuchung hinnehmen.
 
 * Es besteht nur die Möglichkeit endlich viele Bedingungen zu überprüfen 
@@ -361,7 +358,7 @@ runif(10)
 
 
 ### PP-Coincidence
-Der PP-Coincidence wurde im Zuge eines Praktikums im Fach Computational Statistics entwickelt. Der Algorithmus lässt sich wie folgt darstellen.
+Der PP-Coincidence wurde im Zuge eines Praktikums im Fach Computational Statistics entwickelt. Der Algorithmus lässt sich wie folgt rekursiv definieren.
 
 $$x_{n+1}=\begin{cases}(x_n \mod{10000}) \cdot (x_n \mod{10000}) \oplus\ \text{current Time}&\text{, wenn }\vert\frac{x_n}{10000}\vert = 0\\(x_n \mod{10000}) \cdot \vert\frac{x_n}{10000}\vert &\text{, sonst}\end{cases}$$
 
