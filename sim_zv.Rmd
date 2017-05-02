@@ -120,14 +120,11 @@ Bemerkungen:
 
 
 ### Sonstige
+Weitere Methoden zur Erzeugung gleichverteilter Zufallszahlen sind unter anderem:
 
-Die folgende Liste enthält weitere gleichverteilte Pseudozufallsgeneratoren.
-
-* \textbf{Lineare Kongruenzgeneratoren}
-* \textbf{Schieberegister-Generatoren}
-* \textbf{Tausworthe-Generatoren}
-* \textbf{Kombinieren verschiedener Generatoren}
-* \textbf{Inverse Kongruenzgeneratoren}
+* \textbf{Kongruenzgeneratoren(engl.: congruential generators)}: Mit die am weitest verbreitesten Arten von Generatoren. Sie arbeiten, mit der Summe ihrer vorherigen Zustände und dem Modulo operator.
+* \textbf{Schieberegister-Generatoren (engl.: Linear-feedback shift register)}: Basierend auf logischen Schaltwerken und Operationen, erzeugt dieser Generator sehr effizient Sequenzen von Pseudozufallszahlen.
+* \textbf{Tausworthe-Generatoren (engl.:Tausworthe generators)}: Erzeugt bitweise Zufallszahlen.
 
 ## Generatoren für sonstige Verteilungen
 
@@ -149,12 +146,14 @@ Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert die
 Die Exponentialverteilung ist mit der Verteilungsfunktion $$F(t)=1-e^{-\lambda e}$$ mit $t>0$ definiert.
 Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}ln(1-y)$$. 
 
-```{r, fig.align=center, echo=FALSE}
+```{r, echo=FALSE}
 # Plot der exponentialfunktions.
 library(ggplot2)
-data <- data.frame(x=seq(1:100), y=exp(seq(1:100)))
-ggplot(data=data, aes(x=data$x, y=data$y))+
-  geom_line() +
+data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
+data2 <- data.frame(x=seq(1:25), y=seq(1:25))
+ggplot() +
+  geom_line(data=data, aes(x=data$x, y=data$y)) +
+  geom_line(data=data2, aes(x=data2$x, y=data2$y)) + 
   labs(title="Exponentialfunktion mit Inverse")
 ```
 
