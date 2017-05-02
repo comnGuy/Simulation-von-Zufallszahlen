@@ -174,7 +174,7 @@ Doch wie gut performen die im vorigen Kapitel vorgestellten Pseudzufallsgenerato
 ## Analytische Gütekriterien
 Im Gegensatz zu dem statistischen Gütekriterium macht das \textbf{analytische Gütekriterium} über spezielle Zufallzahlengeneratoren starke Aussagen über die Güte. Jedoch bringt dies das Problem mit sich, dass diese Aussagen nur über diesen speziellen Generator gelten und daher für den Vergleich mit weiteren Generatoren nicht ideal ist. In diesem Fall wird versucht die Güte anhand eines Modells im Vergleich zum Zufallsexperiment anzunähern und mit vergleichbaren Eigenschaften wird versucht die Güte zu überprüfen. Das Modell sieht wie folgt aus.
 
-$$iid (X_n)_{n\ge0} \sim U(0,1)$$
+$$ (X_n)_{n\ge0} \sim U(0,1)iid$$
 <!-- TODO nochmal erklären was das Modell bedeutet -->
 
 Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlichen Gebiete empirisch und analytisch. Die \textbf{empirische Untersuchung} nimmt ein bestehendes mathematisches Modell an und überprüft, ob die beobachteten Ereignisse von Zufallszahlen mit dem mathematischen Modell zusammenpasst. Dabei besteht die Möglichkeit diese Untersuchung graphisch oder statistisch durchzuführen. Folgende Einschränkungen muss die die empirische Untersuchung hinnehmen.
@@ -186,9 +186,9 @@ Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlichen Gebiete
 Die \textbf{analytische Untersuchung} versucht die Güte des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
 
 ### d-gleichverteilte Folgen
-Wie im vorigen Kapitel angesprochen, kann nur eine endliche Zahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden kann. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. 
+Um zu prüfen, ob ein Generator gleichverteilte Zufallszahlen generiert, besteht die Möglichkeit mit d-gleichverteile Folgen zu arbeiten. Es kann nur eine endliche Zahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden kann. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. 
 
-Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden können. $\tilde{x}_i$ ist für  in der Form
+Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden können. $\tilde{x}_i$ ist für in der Form
 
 $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 überlappend. Wenn
@@ -243,16 +243,42 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
   theme(legend.direction = "horizontal", 
         legend.position = "bottom",
         legend.box = "horizontal") +
-  labs(title = "Unterschiedliche Zufallszahlengeneratoren als Plot",
+  labs(title = "Zufallszahlengeneratoren mit d = 1",
   x = "Zufallszahlen",
   y = "Spannweite des Zufallsgenerators")
 ```
 
-Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgeneratoren. Zwischen $x$ und $y$ sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $y$ möglichst unabhängig von seiner Position $x$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Flächen sehen gleichmäßig aus.
+Die obige Abbildung veranschaulicht einen Plot mit einer "d-gleichverteilt" ($d=1$) von den drei behandelten Pseudozufallsgeneratoren. Zwischen $n$ (x-Achse) und $x_n$ (y-Achse) sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $x_n$ möglichst unabhängig von seiner Position $n$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Flächen sehen gleichmäßig aus.
+
+Weiterhin wird geprüft, ob "d-gleichverteilt" mit $d = 2$ gilt.
+
+```{r, echo=FALSE}
+datamt2 <- data.frame(dataX = datamt[seq(1, 5000, 2),]$data, 
+                      dataY = datamt[seq(2, 5000, 2),]$data,
+                      KindOfRandom = "Mersenne-Twister")
+datasd2 <- data.frame(dataX = datasd[seq(1, 5000, 2),]$data, 
+                      dataY = datasd[seq(2, 5000, 2),]$data,
+                      KindOfRandom = "Super-Duper")
+datawh2 <- data.frame(dataX = datawh[seq(1, 5000, 2),]$data, 
+                      dataY = datawh[seq(2, 5000, 2),]$data,
+                      KindOfRandom = "Wichmann-Hill")
+
+data2 <- rbind(datamt2, datasd2, datawh2)
+
+ggplot(data2, aes(y = dataY, x = dataX, color = KindOfRandom)) + 
+  geom_point(size = 0.01) +
+  facet_grid(~ KindOfRandom) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom",
+        legend.box = "horizontal") +
+  labs(title = "Zufallszahlengeneratoren mit d = 2",
+  x = "Zufallszahlen",
+  y = "Spannweite des Zufallsgenerators")
+```
 
 ### Der Spaktraltest
 
-Ein weiteres Gütemerktmal sind die überlappenden Tupel in einem 3-dimensionalen Raum. Gerade bei Kongruenzgeneratoren können hier Ebenen entstehen, die auf einem nicht-gleichverteilten Generator hinweisen. Die untere Abbildung zeigt einen derartigen Plott mit den 3-Tupel $(u_n, u_{n+1}, u_{n+2})$ des Mersenne-Twisters. Dort ist zu sehen, dass die gegebenen Punkte den Raum gleichmäßig füllen. Das deutet auf die Gleichverteilung des Algorithmuses hin.
+Ein weiteres Gütemerktmal sind die überlappenden Tupel in einem 3-dimensionalen Raum. Gerade bei Kongruenzgeneratoren können hier Ebenen entstehen, die auf einem nicht-gleichverteilten Generator hinweisen. Die untere Abbildung zeigt einen derartigen Plott mit den 3-Tupel $(u_n, u_{n+1}, u_{n+2})$ und $d = 3$ des Mersenne-Twisters. Dort ist zu sehen, dass die gegebenen Punkte den Raum gleichmäßig füllen. Das deutet auf die Gleichverteilung des Algorithmuses hin.
 
 ```{r, echo=FALSE}
 
@@ -289,7 +315,7 @@ Da dieses Kapitel sich mit den statistischen Verfahren befasst, wird zu Beginn d
 
 Zu Beginn muss geklärt werden, was genau ein Anpassungstests ist. Der Begriff \textbf{Anpassungstest} stammt aus der schließenden Statistik und ist dort ein Hypothesentest. Dieser Test ist eine Prüfung auf einer unbekannten Wahrscheinlichkeit einer Zufallsvariable einer bestimmten Verteilung. D. h. es existiert ein Zufallsexperiment mit einer bestimmten Wahrscheinlichkeitsverteilung, die auf ein Verteilungsmodell hinreichend genau (typische Werte: $\alpha = 0.05$, $\alpha = 0.01$) geprüft wird. 
 
-Salopp gesagt soll eine Hypothese aufgestellt werden, die die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ einer bestimmte Verteilung (z. B. $P_0 := U(0,1)$) annähert. Um die Hypothese zu überprüfen, wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße zusammen mit dem kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert. <!-- TODO Hier muss noch das Verhätlnis von T(x) und c beschrieben werden -->
+Salopp gesagt soll eine Hypothese aufgestellt werden, die die Ergebnisse eines Zufallsexpriment $x := (x_0, ... , x_{n-1})$ einer bestimmte Verteilung (z. B. $P_0 := U(0,1)$) annähert. Um die Hypothese zu überprüfen, wird eine Prüfgröße $T(x)$ eingeführt, die den Abstand zwischen dem Verteilungsmodell $P_0$ und der Stichprobe $x$ misst. Die Prüfgröße zusammen mit dem kritischen Wert $c \in \mathbb{R}$ bilden den Test $(T,c)$. Die Herausforderung bei einem Anpassungstest ist die Wahl von der Prüfgröße und dem kritischen Wert. <!-- TODO Hier muss noch das Verhätlnis von T(x) und c beschrieben werden. Die Werte müssen berechnet werden -->
 
 \underline{Beispiel}
 
