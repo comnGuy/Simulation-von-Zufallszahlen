@@ -237,30 +237,32 @@ Die obige Abbildung zeigt einen Plot von den drei behandelten Pseudozufallsgener
 
 ### Der Spaktraltest
 
+Ein weiteres Gütemerktmal sind die überlappenden Tupel in einem 3-dimensionalen Raum. Gerade bei Kongruenzgeneratoren können hier Ebenen entstehen, die auf einem nicht-gleichverteilten Generator hinweisen. Die untere Abbildung zeigt einen derartigen Plott mit den 3-Tupel $(u_n, u_{n+1}, u_{n+2})$ des Mersenne-Twisters. Dort ist zu sehen, dass die gegebenen Punkte den Raum gleichmäßig füllen. Das deutet auf die Gleichverteilung des Algorithmuses hin.
+
 ```{r, echo=FALSE}
 
-numberOfRandomNumbers <- 10000
-
-#RNGkind("Mersenne-Twister") # matches  "Mersenne-Twister"
-#datamt = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Mersenne-Twister", pos = 1:numberOfRandomNumbers)
-
-dataTest <- data.frame(dataX = datamt[seq(1, 3333, 3),]$data, 
+datamt <- data.frame(dataX = datamt[seq(1, 3333, 3),]$data, 
                        dataY = datamt[seq(2, 3333, 3),]$data, 
                        dataZ = datamt[seq(3, 3333, 3),]$data)
 
 
 library(scatterplot3d)
-with(dataTest, {
+
+with(datamt, {
    s3d <- scatterplot3d(dataX, dataY, dataZ, # x,y, z axis
-                 main="3-D Scatterplot - StudierendeEDA2016.csv",
+                 main="Mersenne-Twister",
                  box=FALSE,
-                 #type="h",
-                 color="#999999",
-                 pch = 16)
+                 color="#F8766C",
+                 pch = 16,
+                 xlab="",
+                 ylab="",
+                 zlab="")
    
    s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ)
 })
 ```
+
+
 
 ## Statistische Gütekriterien
 
