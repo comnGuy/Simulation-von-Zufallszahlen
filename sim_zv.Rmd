@@ -361,8 +361,13 @@ runif(10)
 
 
 ### PP-Coincidence
-```{r}
+Der PP-Coincidence wurde im Zuge eines Praktikums im Fach Computational Statistics entwickelt. Der Algorithmus lässt sich wie folgt darstellen.
 
+$$x_{n+1}=\begin{cases}(x_n \mod{10000}) \cdot (x_n \mod{10000}) \oplus\ \text{current Time}&\text{, wenn }\vert\frac{x_n}{10000}\vert = 0\\(x_n \mod{10000}) \cdot \vert\frac{x_n}{10000}\vert &\text{, sonst}\end{cases}$$
+
+Wobei die Betragsstriche $\vert\vert$ in diesem Fall bedeutet, dass die Nachkommastellen abgeschnitten werden. Dazu folgt der R-Code.
+
+```{r}
 # Berechnet die neue Zufallszahl
 PP.Coincidence.CalculateNumber <- function (randomNumber) {
   first <- as.numeric(substr(randomNumber, 0, 5))
