@@ -339,16 +339,19 @@ runif(10)
 
 ## Eigene RNG
 ### PP-Coincidence
-```{r, echo=FALSE}
+```{r}
 
 # Berechnet die neue Zufallszahl
 PP.Coincidence.CalculateNumber <- function (randomNumber) {
   first <- as.numeric(substr(randomNumber, 0, 5))
   second <- as.numeric(substr(randomNumber, 6, 10))
   
+  # Ist der zweite Teil 0 oder nicht definiert =>
+  # Mache ein XOR mit den hinteren Stellen von der aktuellen Zeit
   if(is.na(second) || second == 0) {
     second <- bitwXor(first, as.numeric(substr(as.numeric(Sys.time()), 6, 10)))
   }
+  # Die eigentliche Berechnung
   return (first * second)
 }
 
