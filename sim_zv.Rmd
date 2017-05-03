@@ -9,6 +9,7 @@ tags: [Vorlesung, Computational Statistics, Zufallszahlen, Zufallsvariablen, Sim
 output:
   pdf_document:
     toc: true
+    toc_depth: 3
 ---
 
 \newpage
@@ -119,7 +120,7 @@ Bemerkungen:
 * Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
 
 
-### Sonstige
+### Sonstige Methoden
 Weitere Methoden zur Erzeugung gleichverteilter Zufallszahlen sind unter anderem:
 
 * \textbf{Kongruenzgeneratoren(engl.: congruential generators)}: Mit die am weitest verbreitesten Arten von Generatoren. Sie arbeiten, mit der Summe ihrer vorherigen Zustände und dem Modulo operator.
@@ -146,7 +147,7 @@ Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert die
 Die Exponentialverteilung ist mit der Verteilungsfunktion $$F(t)=1-e^{-\lambda e}$$ mit $t>0$ definiert.
 Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}ln(1-y)$$. 
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 # Plot der exponentialfunktions.
 #library(ggplot2)
 #data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
@@ -206,7 +207,7 @@ Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich gr
 $$h_i := \displaystyle\sum_{n=0}^{N-1} 1_{I_i}(u_n)$$
 zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfrac{h_i}{N}$ bestimmt werden.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 # Berechnet die neue Zufallszahl
 PP.Coincidence.CalculateNumber <- function (randomNumber) {
   first <- as.numeric(substr(randomNumber, 0, 5))
@@ -266,7 +267,7 @@ Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengenerator
 
 Allerdings birgt die Prüfung auf Gleichverteilung durch dieser Art der Visualisierung einer Gefahr. Denn der Generator $x_{n+1} = (x_n + 1)\ MOD\ M$ erzeugt eine ideale Gleichverteilung.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) + 
   geom_point(size = 0.01) +
   facet_grid(~ KindOfRandom) +
@@ -283,7 +284,7 @@ Die obige Abbildung veranschaulicht einen Plot mit einer "d-gleichverteilt" ($d=
 
 Weiterhin wird geprüft, ob "d-gleichverteilt" mit $d = 2$ gilt.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 datamt2 <- data.frame(dataX = datamt[seq(1, 5000, 2),]$data, 
                       dataY = datamt[seq(2, 5000, 2),]$data,
                       KindOfRandom = "Mersenne-Twister")
@@ -312,7 +313,7 @@ ggplot(data2, aes(y = dataY, x = dataX, color = KindOfRandom)) +
 
 Ein weiteres Gütemerktmal sind die überlappenden Tupel in einem 3-dimensionalen Raum. Gerade bei Kongruenzgeneratoren können hier Ebenen entstehen, die auf einem nicht-gleichverteilten Generator hinweisen. Die untere Abbildung zeigt einen derartigen Plott mit den 3-Tupel $(u_n, u_{n+1}, u_{n+2})$ und $d = 3$ des Mersenne-Twisters. Dort ist zu sehen, dass die gegebenen Punkte den Raum gleichmäßig füllen. Das deutet auf die Gleichverteilung des Algorithmuses hin.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 
 datamt <- data.frame(dataX = datamt[seq(1, 3333, 3),]$data, 
                        dataY = datamt[seq(2, 3333, 3),]$data, 
@@ -338,7 +339,7 @@ with(datamt, {
 
 Die untere Abbildung zeigt die Darstellung von dem PP-Coincidence-Zufallsgenerator im Raum. Ebenfalls wurde $d = 3$ verwendet. In der Abbildung ist leicht zu sehen, dass der Algrithmus vom PP-Coincidence nicht gleichverteilt ist.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 
 datawh <- data.frame(dataX = datawh[seq(1, 3333, 3),]$data, 
                        dataY = datawh[seq(2, 3333, 3),]$data, 
@@ -400,7 +401,7 @@ Weiterhin existieren noch die Gütetests, die zwecks Vollständigkeit aufgeliste
 In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt in R ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators einem sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jedem Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. Weitere Informationen können über den folgenden Befehl abgerufen werden.
 
 
-```{r}
+```{r, warning=FALSE,}
 # Ruft die Help-Page von RNG auf
 ?RNG
 ```
@@ -418,7 +419,7 @@ R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
 
 ## Auswahl der RNG in R
 
-```{r results='hide'}
+```{r, warning=FALSE,  results='hide'}
 # RNGkind setzt den Pseudozufallsgenerator
 # Setzt den Zufallsgenerator auf L'Ecuyer-CMRG
 RNGkind("L'Ecuyer-CMRG")
@@ -431,7 +432,7 @@ RNGkind("Mersenne-Twister")
 ```
 
 ## Setzen eines Seeds (optional)
-```{r results='hide'}
+```{r, warning=FALSE, results='hide'}
 # Setzt den Seed auf 123456789 für genau den nächsten Aufruf
 set.seed(123456789)
 
@@ -443,7 +444,7 @@ runif(10)
 ```
 
 
-## Eigene RNG
+## Verwendung eigener RNG
 
 Neben den R-Standard Zufallsgeneratoren, gibt es auch die Möglichkeit eigene Funktionen zu benutzen.
 
@@ -454,7 +455,7 @@ $$x_{n+1}=\begin{cases}(x_n \mod{10000}) \cdot (x_n \mod{10000}) \oplus\ \text{c
 
 Wobei die Betragsstriche $\vert\vert$ in diesem Fall bedeutet, dass die Nachkommastellen abgeschnitten werden. Dazu folgt der R-Code.
 
-```{r}
+```{r, warning=FALSE}
 # Berechnet die neue Zufallszahl
 PP.Coincidence.CalculateNumber <- function (randomNumber) {
   first <- as.numeric(substr(randomNumber, 0, 5))
@@ -486,7 +487,7 @@ PP.Coincidence(5)
 ## Prüfung der Güte von Zufallszahlen
 Wie im oberen Kapitel beschrieben, kann die Güte der Zufallsverteilungen in R graphisch gut dargestellt werden.
 
-```{r, eval=FALSE, results='hide'}
+```{r, warning=FALSE, results='hide'}
 # Graphische Prüfung auf Gleichverteilung
 ggplot(data, aes(x = data)) + 
   geom_histogram(bins = 32) + 
