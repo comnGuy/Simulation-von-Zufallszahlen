@@ -31,7 +31,6 @@ Beispiele für (Hardware)Simulationen:
 
 Diese Simulationen sind meistens nur für wenige Fälle konzipiert. In unserem Fall wird jedoch die Rechnersimulation verwendet, die durch ein reduziertes mathematisches Modell versucht eine reale Problemstellung abzubilden.
 
-<!-- Definition der Zufallsvariable mit dem Buch wiedersprüchlich??? Seite 6 TODO-->
 ## Zufallsvariablen \& Zufallszahlen
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnisses ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einem Kleinbuchstaben $x$ betitelt.
 
@@ -74,16 +73,16 @@ Weiterhin besteht die Möglichkeit die Definition auf einer mathemathischen Eben
 
 > Eine Folge von iid. Zufallsvariablen $(X_n)_{n\geq0}$ mit $U(0,1)$, Michael Kolonk
 
-Alle Pseudozufallsgeneratoren kommen an einer Position an, inder sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
+Alle Pseudozufallsgeneratoren kommen an einer Position an, in der sich die pseudo zufällig generierten Zahlen wiederholen. Dies wird als \textbf{Periodenlänge} bezeichnet. Ein gutes Beispiel ist der Generator $x_{n+1} := (5x_n + 1)\ MOD\ 8$. Wird $x_0 = 1$ gesetzt, werden die Zahlenfolge $1,6,7,4,5,2,3,0,1,6,7\ ...$ generiert. Die maximale Periodenlänge beträgt in diesem Beispiel 8.
 
 ## Generatoren für gleichverteilte Zufallszahlen
 
 ### Mittquadratverfahren
-Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist einer der ältesten und vergleichsweise einfachsten Algorithmen zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Bei dieser Methode wird ein beliebiger (meistens) achtstelliger Initialwert $x_n \in \{0,1...,10^8-1\}$ genommen und quadriert. Die mittleren acht Zieffern dieses Quadrats bilden den neuen Seed.
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist einer der ältesten und vergleichsweise einfachsten Algorithmen zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Bei dieser Methode wird ein beliebiger $k$-stelliger (meistens $k=8$) Initialwert $x_n \in \{0,1...,10^k-1\}$ genommen und quadriert. Die mittleren acht Zieffern dieses Quadrats bilden den neuen Seed.
 
 So können mit der Rekursionvorschift
-$$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
-immer solange Zahlen gebildet, bis das erzeugte $x_{n+1}=0$ ist.
+$$x_{n+1} := mittlere\ k\ Ziffern\ von\ x^2_n$$
+immer solange Zahlen gebildet, bis das erzeugte $x_{n+1}=0$ ist. Bei diesem simplen Algorithmus ist allerdings eine Periodenzahl größer als $8^k$ bei $k$-stelligen Zahlen nicht möglich. 
 
 Nehmen wir den Initialwert von $$x_0=12345678$$
 so folgt daraus nach diesem Algorithmus
@@ -97,7 +96,7 @@ Bemerkungen:
 
 * Inzwischen ist bewiesen, dass der Algorithmus, unabhängig des Startwertes, gegen 0 konvergiert.
 * Die Periodenlänge ist nicht groß.
-* Verwendung als Hash-Funktion.
+* Frühere Verwendung als Hash-Funktion.
 * Bsp. siehe: Shiny app
 
 ### Mersenne-Twister
