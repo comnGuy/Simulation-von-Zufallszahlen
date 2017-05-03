@@ -59,9 +59,9 @@ Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte mes
 	\label{fig2}
 \end{figure}
 
-Allerdings müssen physikalische Beobachtungen (um die Zahlen zu generieren) in einem angemessen großen Abstand zueinander erfolgen um Unabhängigkeit zu gewährleisten.
+Allerdings müssen physikalische Beobachtungen (um die Zahlen zu generieren) in einem angemessen großen Zeitabstand zueinander erfolgen. Die Dauer der Messungen kann variieren und nur so kann ihre Unabhängigkeit gewährleistet werden. 
 
-Demnach zeichnen sich die \textbf{deterministischen Zufallsgeneratoren} dadurch aus, dass bei gleicher Eingabe immer der selber Ausgang berechnet wird. Die so erzeugten Zahlen werden \textbf{Pseudozufallszahlen} genannt.
+Dies führt häufig dazu, dass nichtdeterministische Generatoren für die Erzeugung der Initialwerte verwendet werden, aus welchen dann \textbf{deterministischen Zufallsgeneratoren}, also Algorithmen, weitere \textbf{Pseudozufallszahlen} generiert.
 
 # Erzeugen von (Pseudo)Zufallszahlen
 
@@ -97,12 +97,11 @@ Bemerkungen:
 * Inzwischen ist bewiesen, dass der Algorithmus, unabhängig des Startwertes, gegen 0 konvergiert.
 * Die Periodenlänge ist nicht groß.
 * Frühere Verwendung als Hash-Funktion.
-* Bsp. siehe: Shiny app
 
 ### Mersenne-Twister
 Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
-Der \textbf{Algorithmus} startet mit $N = 624$ verschiedene Wörter, die mit $Y_1\ ...\ Y_N$ bezeichnet werden. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator generiert werden. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Sind die Initialwörter gewählt, berechnet der Mersenne-Twister die weiteren Pseudzufallszahlen wie folgt.
+Der \textbf{Algorithmus} startet mit $N = 624$ verschiedenen Wörtern, die mit $Y_1\ ...\ Y_N$ bezeichnet werden. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator generiert werden. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Sind die Initialwörter gewählt, berechnet der Mersenne-Twister die weiteren Pseudzufallszahlen wie folgt.
 
 $$h := Y_{i-N} - Y_{i-N}\ mod\ 2^{31} + Y_{i-N+1}\ mod\ 2^{31}$$
 $$Y_i := Y_{i-227}\ \oplus \lfloor h/2 \rfloor\ \oplus\ ((h mod 2)\ \cdot\ 9908B0DF_{hex})$$
@@ -529,3 +528,5 @@ ggplot(data, aes(y = data, x = pos)) +
 [5] \textbf{Makoto Matsumoto}, Mersenne Twister, http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/mt.pdf
 
 [6] \textbf{D. E. Knuth}, The Art of Computer Programming, Volume 2: Seminumerical Algorithms
+
+[7] \textbf{Zivi Gutterman, Benny Pinkas, Tzachy Reinman}, Analysis of the Linux Random Number Generator, http://www.codeplanet.eu/files/download/Analysis%20of%20the%20Linux%20Random%20Number%20Generator.pdf
