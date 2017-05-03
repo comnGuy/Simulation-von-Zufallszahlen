@@ -412,6 +412,18 @@ Weitere Informationen können über den Hilfe-Befehl abgerufen werden.
 ?RNG
 ```
 
+## Setzen eines Seeds (optional)
+```{r, warning=FALSE, error=FALSE, results='hide'}
+# Setzt den Seed auf 123456789 für genau den nächsten Aufruf
+set.seed(123456789)
+
+# Generiert immer die selben 10 Zufallszahlen wegen den seed.
+runif(10)
+
+# Generiert 10 Zufallszahlen ohne Seed
+runif(10)
+```
+
 ## Auswahl der RNG in R
 
 R stellt die folgenden Pseudozufallsgeneratoren von Haus aus zur Verfügung.
@@ -435,18 +447,6 @@ RNGkind()
 
 # Setzt den Zufallsgenerator auf Mersenne-Twister (default)
 RNGkind("Mersenne-Twister")
-```
-
-## Setzen eines Seeds (optional)
-```{r, warning=FALSE, error=FALSE, results='hide'}
-# Setzt den Seed auf 123456789 für genau den nächsten Aufruf
-set.seed(123456789)
-
-# Generiert immer die selben 10 Zufallszahlen wegen den seed.
-runif(10)
-
-# Generiert 10 Zufallszahlen ohne Seed
-runif(10)
 ```
 
 
