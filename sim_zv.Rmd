@@ -96,7 +96,6 @@ $$x_3=60759738^2=...$$
 Bemerkungen:
 
 * Inzwischen ist bewiesen, dass der Algorithmus, unabhängig des Startwertes, gegen 0 konvergiert.
-* Der Algorithmus hat offensichtlich Probleme mit $x_n = 0$.
 * Die Periodenlänge ist nicht groß.
 * Verwendung als Hash-Funktion.
 * Bsp. siehe: Shiny app
@@ -405,15 +404,18 @@ Weiterhin existieren noch die Gütetests, die zwecks Vollständigkeit aufgeliste
 * Lücken Test
 
 # Zufallszahlen in R
-In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt in R ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators einem sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jedem Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. Weitere Informationen können über den folgenden Befehl abgerufen werden.
+In bestimmten Situationen werden in R Zufallszahlen benötigt. R bietet dafür verschiedene Pseudzufallszahlengeneratoren, die direkt im Editor ausgewählt werden können. Dabei besteht die Möglichkeit vor dem Aufruf eines Generators (engl.: Random Number Generator) einem sogenannten \textbf{Seed} festzulegen. Ein Seed ermöglicht dem Nutzer eine Rekonstruierung der generierten Zufallszahlen nach jedem Aufruf. Wird bei einem Aufruf kein Seed gesetzt, wird einer zufällig generiert. 
 
+Weitere Informationen können über den Hilfe-Befehl abgerufen werden.
 
 ```{r, warning=FALSE, error=FALSE}
 # Ruft die Help-Page von RNG auf
 ?RNG
 ```
 
-R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
+## Auswahl der RNG in R
+
+R stellt die folgenden Pseudozufallsgeneratoren von Haus aus zur Verfügung.
 
   * Wichmann-Hill
   * Marsaglia-Multicarry
@@ -423,8 +425,6 @@ R stellt die folgenden Pseudozufallsgeneratoren nativ zur Verfügung.
   * Knuth-TAOCP
   * L'Ecuyer-CMRG
   * RNGkind() bietet die Möglichkeit einen eigenen Zufallszahlengenerator zu implementieren
-
-## Auswahl der RNG in R
 
 ```{r, warning=FALSE, error=FALSE,  results='hide'}
 # RNGkind setzt den Pseudozufallsgenerator
