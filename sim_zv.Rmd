@@ -21,7 +21,7 @@ Die Erzeugung von Zufälligkeiten in einem Computer (ein deterministischer Autom
 Um möglichen Verwirrungen vorzubeugen, werden in diesen Kapitel Begrifflichkeiten in Bezug aus das Thema Simulation von Zufallszahlen eingeführt und abgegrenzt.
 
 ## Simulation
-In einigen Situationen besteht die Notwenigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem meist stark vereinfachte Modell der Realität. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
+In einigen Situationen besteht die Notwendigkeit etwas zu simulieren, zum Beispiel wenn ein Experiment oder ein Vorhaben zu teuer oder gefährlich wird. Generell wird versucht eine Simulation aufzubauen, wenn die Realisierung eines realen Systems nicht möglich ist. Demnach ist eine Simulation ein Experiment an einem meist stark vereinfachte Modell der Realität. Dadurch besteht die Möglichkeit der Gewinnung neuer Erkenntnisse.
 
 Beispiele für (Hardware)Simulationen:
 
@@ -36,7 +36,7 @@ Diese Simulationen sind meistens nur für wenige Fälle konzipiert. In unserem F
 Eine \textbf{Zufallsvariable} ist eine Variable, die die Wahrscheinlichkeit eines noch nicht durchgeführten Experiments beschreibt. Beispielsweise kann solch eine Zufallsvariable den Wurf eines fairen sechseitigen Würfels beschreiben. Die Wahrscheinlichkeit für den Ausgang eines bestimmten Ergebnisses ist in diesem Beispiel gleichverteilt. Das Ergebnis wird als \textbf{Zufallszahl} beschrieben. Mathematisch wird eine Zufallsvariable mit einem Großbuchstaben $X$, $Y$, $Z$ und eine Zufallszahl mit einem Kleinbuchstaben $x$ betitelt.
 
 ## Gleichverteilung
-Der Grund für dieses Kapitel ist, dass ein großer Teil der Zufallsgeneratoren gleichverteilt sind. In diesem Beitrag wird die \textbf{Gleichverteilung} $U(0,1)$ mit dem Intervall $(0,1)$ behandelt. Die Folge von Zufallsvariablen $(x_m)_{m\ge1}$ sind iid. Der Begriff \textbf{Iid} ist die Abkürzung für die unabhängig und identisch verteilte Folge von Zufallsvariablen. Das bedeutet, dass die Zufallsvariablen die gleiche verteilte Folge besitzen, dennoch alle unabhängig voneinander sind.
+Ein großer Teil der Zufallsgeneratoren sind gleichverteilt. In diesem Beitrag wird die \textbf{Gleichverteilung} $U(0,1)$ mit dem Intervall $(0,1)$ behandelt. Die Folge von Zufallsvariablen $(x_m)_{m\ge1}$ sind iid. Der Begriff \textbf{Iid} ist die Abkürzung für die unabhängig und identisch verteilte Folge von Zufallsvariablen. Das bedeutet, dass die Zufallsvariablen die gleiche verteilte Folge besitzen, dennoch alle unabhängig voneinander sind.
 
 Beispiele für Zufallsexperimente mit einer Gleichverteilung sind die folgenden:
 
