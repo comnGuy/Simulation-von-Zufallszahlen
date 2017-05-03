@@ -206,6 +206,35 @@ Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich gr
 $$h_i := \displaystyle\sum_{n=0}^{N-1} 1_{I_i}(u_n)$$
 zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfrac{h_i}{N}$ bestimmt werden.
 
+```{r}
+# Berechnet die neue Zufallszahl
+PP.Coincidence.CalculateNumber <- function (randomNumber) {
+  first <- as.numeric(substr(randomNumber, 0, 5))
+  second <- as.numeric(substr(randomNumber, 6, 10))
+  
+  # Ist der zweite Teil 0 oder nicht definiert =>
+  # Mache ein XOR mit den hinteren Stellen von der aktuellen Zeit
+  if(is.na(second) || second == 0) {
+    second <- bitwXor(first, as.numeric(substr(as.numeric(Sys.time()), 6, 10)))
+  }
+  # Die eigentliche Berechnung
+  return (first * second)
+}
+
+# Initialaufruf mit einer Anzahl von Zufallszahlen
+PP.Coincidence <- function(numberOfRandomNumbers){
+  rngNumber <- as.numeric(Sys.time())
+  randomNumberList <- c()
+  
+  for(i in 1:numberOfRandomNumbers){
+    rngNumber <- PP.Coincidence.CalculateNumber(rngNumber)
+    randomNumberList <- c(randomNumberList, rngNumber/10000000000)
+  }
+  randomNumberList
+}
+PP.Coincidence(5)
+
+```
 ```{r, echo=FALSE}
 library(ggplot2)
 numberOfRandomNumbers <- 10000
@@ -217,7 +246,7 @@ RNGkind("Super") # matches  "Super-Duper"
 datasd = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Super-Duper", pos = 1:numberOfRandomNumbers)
 
 RNGkind("Wichmann-Hill") # matches  "Wichmann-Hill"
-datawh = data.frame(data = runif(numberOfRandomNumbers), KindOfRandom = "Wichmann-Hill", pos = 1:numberOfRandomNumbers)
+datawh = data.frame(data = PP.Coincidence(numberOfRandomNumbers), KindOfRandom = "PP-Coincidence", pos = 1:numberOfRandomNumbers)
 
 data <- rbind(datamt, datasd, datawh)
 
@@ -229,7 +258,8 @@ ggplot(data, aes(x = data, color = KindOfRandom, fill = KindOfRandom)) +
         legend.box = "horizontal") +
   labs(title = "Unterschiedliche Zufallszahlengeneratoren pro Histogramm (Verteilung)",
   x = "Generierte 10000 Zufallszahlen (32er Bins)",
-  y = "Anzahl der Zufallszahlen pro Bin")
+  y = "Anzahl der Zufallszahlen pro Bin") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 Die obige Abbildung visualisiert die drei genannten Pseudozufallszahlengeneratoren mit einer Anzahl von jeweils $N = 10000$ Zahlen pro Generator in einem Histogramm. Die Zahlen wurden in 32er Bins eingeteilt mit $i = \{1, ..., 32\}$. Da alle drei Generatoren $U(0,1)$ sind, müsste die Anzahl der Zufallszahlen pro bin mit $\dfrac{N}{max(i)} = 312,5$ annährend berechnen lassen. Wird dazu die obige Abbildung gegengestellt, kann subjektiv erkannt werden, dass sich bis auf die äußeren Bins alle weiteren sich in dem errechneten Bereich bewegen. 
@@ -245,7 +275,8 @@ ggplot(data, aes(y = data, x = pos, color = KindOfRandom)) +
         legend.box = "horizontal") +
   labs(title = "Zufallszahlengeneratoren mit d = 1",
   x = "Zufallszahlen",
-  y = "Spannweite des Zufallsgenerators")
+  y = "Spannweite des Zufallsgenerators") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 Die obige Abbildung veranschaulicht einen Plot mit einer "d-gleichverteilt" ($d=1$) von den drei behandelten Pseudozufallsgeneratoren. Zwischen $n$ (x-Achse) und $x_n$ (y-Achse) sollte es keinerlei Zusammenhang geben, da die generierte Zufallszahl $x_n$ möglichst unabhängig von seiner Position $n$ sein soll. Entstehen in einem derartigen Plot wiederkehrende Muster ist der Generator nicht optimal. Im gegebenen Fall entstehen keine Hinweise auf Muster, die Flächen sehen gleichmäßig aus.
@@ -261,7 +292,7 @@ datasd2 <- data.frame(dataX = datasd[seq(1, 5000, 2),]$data,
                       KindOfRandom = "Super-Duper")
 datawh2 <- data.frame(dataX = datawh[seq(1, 5000, 2),]$data, 
                       dataY = datawh[seq(2, 5000, 2),]$data,
-                      KindOfRandom = "Wichmann-Hill")
+                      KindOfRandom = "PP-Coincidence")
 
 data2 <- rbind(datamt2, datasd2, datawh2)
 
@@ -273,7 +304,8 @@ ggplot(data2, aes(y = dataY, x = dataX, color = KindOfRandom)) +
         legend.box = "horizontal") +
   labs(title = "Zufallszahlengeneratoren mit d = 2",
   x = "Zufallszahlen",
-  y = "Spannweite des Zufallsgenerators")
+  y = "Spannweite des Zufallsgenerators") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ### Der Spaktraltest
@@ -299,7 +331,33 @@ with(datamt, {
                  ylab="",
                  zlab="")
    
-   s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ)
+   s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ) +
+  theme(plot.title = element_text(hjust = 0.5))
+})
+```
+
+Die untere Abbildung zeigt die Darstellung von dem PP-Coincidence-Zufallsgenerator im Raum. Ebenfalls wurde $d = 3$ verwendet. In der Abbildung ist leicht zu sehen, dass der Algrithmus vom PP-Coincidence nicht gleichverteilt ist.
+```{r, echo=FALSE}
+
+datawh <- data.frame(dataX = datawh[seq(1, 3333, 3),]$data, 
+                       dataY = datawh[seq(2, 3333, 3),]$data, 
+                       dataZ = datawh[seq(3, 3333, 3),]$data)
+
+
+library(scatterplot3d)
+
+with(datawh, {
+   s3d <- scatterplot3d(dataX, dataY, dataZ, # x,y, z axis
+                 main="PP-Coincidence",
+                 box=FALSE,
+                 color="#619CFF",
+                 pch = 16,
+                 xlab="",
+                 ylab="",
+                 zlab="")
+   
+   s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ) +
+  theme(plot.title = element_text(hjust = 0.5))
 })
 ```
 
