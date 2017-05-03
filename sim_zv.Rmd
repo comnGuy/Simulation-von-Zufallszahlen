@@ -200,9 +200,10 @@ Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden könn
 $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 überlappend. Dabei gelten folgende Eigenschaften.
 
-$$f(k,d)=\begin{cases}\text{Teilstücke überlappend}&\text{, wenn }1 \le k \le d - 1\\
-                       \text{Teilstücke disjunkt und lückenlos}&\text{, wenn }k = d\\
-                       \text{Teilstücke disjunkt und gespreizt}&\text{, wenn }k > d\end{cases}$$
+$$f(k,d,i )=\begin{cases}\tilde{x_i} \text{ überlappend}&\text{, wenn }1 \le k \le d - 1\\
+                       \tilde{x_i} \text{ disjunkt und lückenlos}&\text{, wenn }k = d\\
+                       \tilde{x_i}\text{ disjunkt und gespreizt}&\text{, wenn }k > d\end{cases}$$
+
 
 ### Graphische Überprüfung der Gleichverteilung
 Jetzt gilt die vorgeschlagenen Bedingungen anhand von graphischen Mitteln zu untersuchen. Als Beispiel wurde der Mersenne-Twister, Super-Duper und PP-Coincidence ausgewählt. Alle ausgewählten Verfahren sollten nach Möglichkeit gleichverteilt nach der Verteilung $U(0,1)$ erfüllen. 
@@ -239,8 +240,6 @@ PP.Coincidence <- function(numberOfRandomNumbers){
   }
   randomNumberList
 }
-PP.Coincidence(5)
-
 ```
 ```{r, warning=FALSE, error=FALSE, echo=FALSE}
 library(ggplot2)
