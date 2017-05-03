@@ -79,12 +79,19 @@ Alle Pseudozufallsgeneratoren kommen an einer Position an, inder sich die pseudo
 ## Generatoren für gleichverteilte Zufallszahlen
 
 ### Mittquadratverfahren
-Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist einer der ältesten und vergleichsweise einfachsten Algorithmen zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Bei dieser Methode wird ein beliebiger achtstelliger Initialwert $x_n \in \{0,1...,10^8\}$ (meistens die Uhrzeit) genommen und die Quadrate der beiden mittleren Stellen miteinander multipliziert.
+Das \textbf{Mittquadratverfahren (engl.: Middle-Square method)} ist einer der ältesten und vergleichsweise einfachsten Algorithmen zur Erzeugung gleichverteilter (Pseudo)Zufallszahlen. Er wurde 1946 von John von Neumann entwickelt. Bei dieser Methode wird ein beliebiger (meistens) achtstelliger Initialwert $x_n \in \{0,1...,10^8-1\}$ genommen und quadriert. Die mittleren acht Zieffern dieses Quadrats bilden den neuen Seed.
 
-Die weiteren Schritte können mit 
+So können mit der Rekursionvorschift
 $$x_{n+1} := mittlere\ acht\ Ziffern\ von\ x^2_n$$
-rekursiv immer weiter gebildet werden.
+immer solange Zahlen gebildet, bis das erzeugte $x_{n+1}=0$ ist.
 
+Nehmen wir den Initialwert von $$x_0=12345678$$
+so folgt daraus nach diesem Algorithmus
+
+$$x_0=\underline{12345678}$$
+$$x_1=12345678^2=0152\underline{41576527}9684$$
+$$x_2=41576527^2=1728\underline{60759738}1729$$
+$$x_3=60759738^2=...$$
 
 Bemerkungen:
 
