@@ -337,6 +337,7 @@ with(datamt, {
 ```
 
 Die untere Abbildung zeigt die Darstellung von dem PP-Coincidence-Zufallsgenerator im Raum. Ebenfalls wurde $d = 3$ verwendet. In der Abbildung ist leicht zu sehen, dass der Algrithmus vom PP-Coincidence nicht gleichverteilt ist.
+
 ```{r, echo=FALSE}
 
 datawh <- data.frame(dataX = datawh[seq(1, 3333, 3),]$data, 
