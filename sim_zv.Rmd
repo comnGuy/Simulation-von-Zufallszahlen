@@ -200,13 +200,13 @@ $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
 ### Graphische Überprüfung der Gleichverteilung
 Jetzt gilt die vorgeschlagenen Bedingungen anhand von graphischen Mitteln zu untersuchen. Als Beispiel wurde der Mersenne-Twister, Super-Duper und PP-Coincidence ausgewählt. Alle ausgewählten Verfahren sollten nach Möglichkeit gleichverteilt nach der Verteilung $U(0,1)$ erfüllen. 
 
-Der \textbf{Mersenne-Twister} arbeitet mit einer Periodenlänge von $p = 2^{19937} - 1$. Wie der Name schon sagt, ist das eine Mersenne-Prinzahl. Der Pseudozufallszahlengenerator \textbf{Super-Duper} wurde in den 70ger Jahren erfunden und arbeitet mit einer Periodenlänge von $p = 6*10^{18}$. Als dritten Generator wurde der \textbf{Wichmann-Hill} verwendet. Er generiert Zufallszahlen mit einer Periodenlänge von mehr als $6.95 * 10^{12}$.
+Der \textbf{Mersenne-Twister} arbeitet mit einer Periodenlänge von $p = 2^{19937} - 1$. Wie der Name schon sagt, ist das eine Mersenne-Prinzahl. Der Pseudozufallszahlengenerator \textbf{Super-Duper} wurde in den 70ger Jahren erfunden und arbeitet mit einer Periodenlänge von $p = 6*10^{18}$.
 
 Unterteilt werden die Zufallszahlenergebnisse jedes Verfahren in $2^5$ gleich große Teilintervalle $I_0,...,I_{31}$. Durch die Unterteilung besteht die Möglichkeit die Anzahl der Vorkommnisse in jedem Teilintervall mit der Formel
 $$h_i := \displaystyle\sum_{n=0}^{N-1} 1_{I_i}(u_n)$$
 zu berechnen. Die relativen Häufigkeiten können für jedes Intervall mit $\dfrac{h_i}{N}$ bestimmt werden.
 
-```{r}
+```{r, echo=FALSE}
 # Berechnet die neue Zufallszahl
 PP.Coincidence.CalculateNumber <- function (randomNumber) {
   first <- as.numeric(substr(randomNumber, 0, 5))
