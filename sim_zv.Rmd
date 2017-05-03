@@ -452,7 +452,8 @@ RNGkind("Mersenne-Twister")
 
 ## Verwendung eigener RNG
 
-Neben den R-Standard Zufallsgeneratoren, gibt es auch die Möglichkeit eigene Funktionen zu benutzen.
+Die Implementierung eigener Zufallszahlengeneratoren ist, sofern erwünscht, möglich. Für die Einbindung in der Funktion `RNGkind()` wird C-Code benötigt, der in R eingebunden wird.
+
 
 ### PP-Coincidence
 Der PP-Coincidence wurde im Zuge eines Praktikums im Fach Computational Statistics entwickelt. Der Algorithmus lässt sich wie folgt rekursiv definieren.
