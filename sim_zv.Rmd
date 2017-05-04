@@ -151,7 +151,13 @@ Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} las
 
 Es sei $F$ eine Verteilungsfunktion und $U$ eine $U(0,1)$-verteilte Zufallsvariable. Dann gilt: Die allgemeine Inverse $Y:=F^{-1}(U)$ hat die Verteilungsfunktion $F$ d.h. $$P(Y \leq t)=F(t), t\in \mathbb{R}$$
 
-Mit $F^{-1}(r)$ als Funktion `FhochMinusEins(r)` kann nun aus einer gleichverteilten Zufallszahl eine mit einer bestimmer Verteilung erzeugt werden.
+Das Vorgehen um aus einer gleichverteilten Zufallszahl eine mit bestimmter Verteilung zu machen ist nun:
+
+1. Erzeuge einer gleichverteilte Zufallszahl
+2. Berechne den Wert der $F^{-1}$ durch Einsetzen der Zahl
+3. Nehme den Wert als $F$-verteilte Zufallszahl
+
+Oder als methode mit $F^{-1}(r)$ als `FhochMinusEins(r)` :
 ```{}
 double FRandGen() {
   return FhochMinusEins(RandGen());
@@ -177,9 +183,6 @@ ggplot() +
   geom_line(data=dat2, aes(x=dat2$x, y=dat2$px, color="blue")) +
   labs(title="Verteilungsfunktion exp() und Umkehrfunktion")
 ```
-
-
-Bemerkungen:
 
 
 ### Sonstige Methoden
