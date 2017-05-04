@@ -178,10 +178,9 @@ x <- seq(0, 20, length.out=1000)
 dat <- data.frame(x=x, px=dexp(x, rate=0.65))
 dat2 <- data.frame(x=x, px=pinvexp(x, rate=0.65))
 
-ggplot() + 
-  geom_line(data=dat, aes(x=dat$x, y=dat$px, color="red")) +
-  geom_line(data=dat2, aes(x=dat2$x, y=dat2$px, color="blue")) +
-  labs(title="Verteilungsfunktion exp() und Umkehrfunktion")
+ggplot(data=dat2, aes(x=dat2$x, y=dat2$px, color="red")) + 
+  geom_line() +
+  labs(title="F^-1", x="x", y="y")
 ```
 
 
