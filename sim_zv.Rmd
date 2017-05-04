@@ -99,19 +99,34 @@ Bemerkungen:
 ### Mersenne-Twister
 Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Der Generator gilt als quasi-Standard für moderne Pseudozufallszahlengeneratoren und wird in zahlreichen Programmiersprachen und Softwareanwendungen verwendet. Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
-Der \textbf{Algorithmus} startet, indem er mit einem Seed $n$ verschiedene binäre Wörter $Y_1\ ...\ Y_n$ mit jeweils $w$ Bit generiert. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator stammen. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Nach der Initialisierung, berechnet der Mersenne-Twister den nächsten Zustand.
+Der \textbf{Algorithmus} startet, indem er mit einem Seed $n$ verschiedene binäre Wörter $x_1,\ ...\ , x_n$ mit jeweils $w$ Bit generiert. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator stammen. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Zusätzlich müssen beim Start des Algorithmus mehrere Bitmasken für binäre Operationen definiert werden. Nach der Initialisierung, berechnet der Mersenne-Twister den nächsten Zustand.
 
-$$h := Y_{i-N} - Y_{i-N}\ mod\ 2^{31} + Y_{i-N+1}\ mod\ 2^{31}$$
-$$Y_i := Y_{i-227}\ \oplus \lfloor h/2 \rfloor\ \oplus\ ((h mod 2)\ \cdot\ 9908B0DF_{hex})$$
+Die \textbf{twist}-Funktion wird hierzu rekursiv als
+$$x_{k+n}:=x_{k+m}\oplus((x_{k}^u || x_{k+1}^l)A)$$
+$$k = 0,1,...$$
+dargestellt. Hierbei sind $||$ als bitweises `ODER`, $\oplus$ als bitweises `XOR` dargestellt sowie $x^u$ und $x^l$ als Anwendungen der höheren und niederen Bitmasken. Die Twist Transformation A ist in der rationalen Normalform definiert.
 
-Weiterhin wird durch die nächsten Formeln die Gleichverteilung sichergegestellt.
+$$A=R=\begin{pmatrix}
+  0 & I_{w-1} \\
+  a_{w-1} & (a_{w-2},...,a_0)
+ \end{pmatrix}$$
+mit $I_{w-1}$ als Identitätsmatrix. 
 
-$$x := Y_i\ \oplus\ \lfloor Y_i / 2^{11}\rfloor$$
-$$y := x\ \oplus\ ((x\ \cdot\ 2^7)\ \wedge\ 9D2C5680_{hex}$$
-$$z := y\ \oplus\ ((y\ \cdot\ 2^15)\ \wedge\ EFC60000_{hex}$$
-$$Z_i := z\ \oplus\ \lfloor z / 2^{18}\rfloor$$
+Sollen jetzt aus den transformierten Wörtern Zufallszahlen ausgegeben werden, werden vorher, ähnlich wie bei \textbf{Generellen rückgekoppelten Schieberegistern (engl.: Generalized Feedback Shift Register)}, hintereinander \textbf{Tempering Transformationen} durchlaufen um eine bessere Gleichverteilung zu erreichen. Das Tempering ist beim Mersenne-Twister wie folgt
+$$y:=x\oplus(x >> u)$$
+$$y:=y\oplus((y<<s)\wedge b)$$
+$$y:=y\oplus((y<<t)\wedge c)$$
+$$z:=y\oplus(y>>l)$$
+definiert.
 
-$Z_i$ ist eine Zufallszahl. Dabei stellt $\oplus$ eine bitweise XOR-Operation und $\wedge$ eine bitweise UND-Operation dar.
+So lässt sich der Algorithmus in sechs Schritte aufgliedern:
+
+1. Parameter und Bitmasken definieren
+2. Initialisieren von $n$ Wörtern per Seed
+3. Logische Verknüpfung der höheren Bits $y$ von $x_i$ mit den niederen Bits von $x_{i+1}
+4. $y$ mit Matrix $A$ multiplizieren
+5. Tempering
+6. Zähler $i$ um $1$ erhöhen
 
 Bemerkungen:
 
@@ -119,7 +134,7 @@ Bemerkungen:
 * Die Parallelisierung ist leicht zu realisieren.
 * Der Generator benötigt ca. 2,5 kByte, welches auf kleineren Systemen mit wenig Cache zu Performanceeinbußen kommt.
 * Der Mersenne-Twister wird in R als Standardpseudozufallszahlengenerator benutzt.
-* Der Mersenne-Twister ist für viele Anwendungen ein Standard-Verfahren, unteranderem ist er in R, Stata, Microsoft Excel & Mathematica implementiert.
+* Das Verfahren ist nicht für kryptographische-Verfahren geeignet, keine Einwegfunktionen verwendet werden.
 
 
 ### Sonstige Methoden
