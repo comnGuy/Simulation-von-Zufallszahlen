@@ -140,7 +140,7 @@ Bemerkungen:
 ### Sonstige Methoden
 Weitere Methoden zur Erzeugung gleichverteilter Zufallszahlen sind unter anderem:
 
-* \textbf{Kongruenzgeneratoren(engl.: congruential generators)}: Mit die am weitest verbreitesten Arten von Generatoren. Sie arbeiten, mit der Summe ihrer vorherigen Zustände und dem Modulo operator.
+* \textbf{Kongruenzgeneratoren(engl.: congruential generators)}: Mit die am weitest verbreitesten Arten von Generatoren. Sie arbeiten, mit der Summe ihrer vorherigen Zustände und dem Modulo-Operator.
 * \textbf{Schieberegister-Generatoren (engl.: Linear-feedback shift register)}: Basierend auf logischen Schaltwerken und Operationen, erzeugt dieser Generator sehr effizient Sequenzen von Pseudozufallszahlen.
 * \textbf{Tausworthe-Generatoren (engl.:Tausworthe generators)}: Erzeugt bitweise Zufallszahlen.
 
@@ -151,7 +151,7 @@ Mit Hilfe der \textbf{Inversionsmethode (engl.: Inverse transform sampling)} las
 
 Es sei $F$ eine Verteilungsfunktion und $U$ eine $U(0,1)$-verteilte Zufallsvariable. Dann gilt: Die allgemeine Inverse $Y:=F^{-1}(U)$ hat die Verteilungsfunktion $F$ d.h. $$P(Y \leq t)=F(t), t\in \mathbb{R}$$
 
-Mit $F^{-1}(r)$ als Funktion `FhochMinusEins(r)` kann nun aus einer gleichverteilten Zufallszahl eine mit einer bestimmer Verteilung.
+Mit $F^{-1}(r)$ als Funktion `FhochMinusEins(r)` kann nun aus einer gleichverteilten Zufallszahl eine mit einer bestimmer Verteilung erzeugt werden.
 ```{}
 double FRandGen() {
   return FhochMinusEins(RandGen());
@@ -159,20 +159,23 @@ double FRandGen() {
 ```
 Auch wenn sich so theoretisch alle Verteilungen simulieren lassen, scheitert diese Methode in der Praxis daran, dass sich deren Quantilfunktion (z.B. bei Normalverteilung) nicht effizient berechnen lässt.
 
-\emph{Beispiel:} Simulation der Exponentialverteilung $exp(\alpha)$
+\emph{Beispiel:} Simulation der Exponentialverteilung $exp(\lambda)$
 
-Die Exponentialverteilung ist mit der Verteilungsfunktion $$F(t)=1-e^{-\lambda e}$$ mit $t>0$ definiert.
+Die Exponentialverteilung ist mit der Verteilungsfunktion $$F(t)=1-e^{-\lambda t}$$ mit $t\geq0$ definiert.
 Bilden wir nun die Umkehrfunktion, erhalten wir $$x=F^{-1}(y)=-\frac{1}{\lambda}ln(1-y)$$. 
 
 ```{r, warning=FALSE, echo=FALSE}
-# Plot der exponentialfunktions.
-#library(ggplot2)
-#data <- data.frame(x=seq(1:25), y=pexp(seq(1:25)))
-#data2 <- data.frame(x=seq(1:25), y=seq(1:25))
-#ggplot() +
-#  geom_line(data=data, aes(x=data$x, y=data$y)) +
-#  geom_line(data=data2, aes(x=data2$x, y=data2$y)) + 
-#  labs(title="Exponentialfunktion mit Inverse")
+library(invgamma)
+library(ggplot2)
+
+x <- seq(0, 20, length.out=1000)
+dat <- data.frame(x=x, px=dexp(x, rate=0.65))
+dat2 <- data.frame(x=x, px=pinvexp(x, rate=0.65))
+
+ggplot() + 
+  geom_line(data=dat, aes(x=dat$x, y=dat$px, color="red")) +
+  geom_line(data=dat2, aes(x=dat2$x, y=dat2$px, color="blue")) +
+  labs(title="Verteilungsfunktion exp() und Umkehrfunktion")
 ```
 
 
@@ -180,7 +183,7 @@ Bemerkungen:
 
 
 ### Sonstige Methoden
-Neben den Vorgestellten Methoden, gibt es noch eine ganze Reihe weitere Generatoren für speziell verteilte Zufallszahlen.
+Neben der Inversionsmethoden, gibt es noch eine ganze Reihe weitere Arten von Generatoren für speziell verteilte Zufallszahlen.
 
 * \textbf{Verwerfungsmethode (engl.: Rejection sampling)}: Alternative zur Inversionsmethode, für Wahrscheinlichkeitsverteilungen, die zu komplex zu berechnen sind.
 
