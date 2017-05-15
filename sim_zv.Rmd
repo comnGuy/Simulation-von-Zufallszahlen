@@ -209,16 +209,39 @@ Dabei unterscheiden sich die Untersuchungen in die zwei grundsätzlichen Gebiete
 Die \textbf{analytische Untersuchung} versucht die Güte des Zufallsgenerators anhand mathematischer-analystischer Methoden nachzuweisen.
 
 ### d-gleichverteilte Folgen
-Um zu prüfen, ob ein Generator gleichverteilte Zufallszahlen generiert, besteht die Möglichkeit mit d-gleichverteile Folgen zu arbeiten. Es können nur eine endliche Zahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. 
-
-Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden können. $\tilde{x}_i$ ist für in der Form
+Um zu prüfen, ob ein Generator gleichverteilte Zufallszahlen generiert, besteht die Möglichkeit mit d-gleichverteile Folgen zu arbeiten. Es können nur eine endliche Zufallszahlenfolge $(x_n)_{n \ge 0}$ mit einer Länge $d$ überprüft werden. Sollte die Beobachtung wiederholt werden und unabhängig sein, sollten die Teilstücke disjunkt gewählt werden. Weiterhin existiert die Möglichkeit, dass die Zahlenfolgen sich schneiden können. $\tilde{x}_i$ ist für in der Form
 
 $$\tilde{x}_i := (x_{ik}, x_{ik+1},...,x_{ik+d-1}),\quad i = 0,1,...$$
-überlappend. Dabei gelten folgende Eigenschaften.
+überlappend. Der Parameter $k$ bezeichnet die Position des Tupels und $d$ die Größe des Tupels. Dabei gelten folgende Eigenschaften. 
 
 $$f_i(k,d)=\begin{cases}\tilde{x_i} \text{ überlappend}&\text{, wenn }1 \le k \le d - 1\\
                        \tilde{x_i} \text{ disjunkt und lückenlos}&\text{, wenn }k = d\\
                        \tilde{x_i}\text{ disjunkt und gespreizt}&\text{, wenn }k > d\end{cases}$$
+
+Das folgende \textbf{1. Beispiel} arbeitet mit $k = d = 2$, also disjunkte und lückenlose, Folgen.
+
+$$\tilde{x}_0 := (x_{0*2}, x_{0*2+1}) = (x_{0}, x_{1})$$
+$$\tilde{x}_1 := (x_{1*2}, x_{1*2+1}) = (x_{2}, x_{3})$$
+$$\vdots$$
+Mit $i = 1, 2 ...$, wobei $i$ der i-te Datensatz ist.
+
+Das \textbf{2. Beispiel} arbeitet mit $k = 3$ und $d = 2$. Dabei ist zu beachten, dass die 2-Tupel mit $k > d$ disjunkt und gespreizt sind.
+
+$$\tilde{x}_0 := (x_{0*3}, x_{0*3+1}) = (x_{0}, x_{1})$$
+$$\tilde{x}_1 := (x_{1*3}, x_{1*3+1}) = (x_{3}, x_{4})$$
+$$\vdots$$
+Mit $i = 1, 2 ...$, wobei $i$ der i-te Datensatz ist. In diesem Beispiel fällt auf, dass $x_2$ in keinem 2-Tupel verkommen wird. Demnach sind die 2-Tupel gespreizt.
+
+Das \textbf{3. Beispiel} arbeitet mit $k = 2$ und $d = 3$. Ausgehend von den definierten Eigenschaften müssten mit den Parametern überlappende 3-Tupel auftreten, da $1 \le k \le d - 1$ gilt. 
+
+$$\tilde{x}_0 := (x_{0*2}, x_{0*2+1}, x_{0*2+2}) = (x_{0}, x_{1}, x_{2})$$
+$$\tilde{x}_1 := (x_{1*2}, x_{1*2+1}, x_{1*2+2}) = (x_{2}, x_{3}, x_{4})$$
+$$\vdots$$
+Wie vermutet sind die 3-Tupel überlappend. Im Beispiel existiert $x_2$ in $\tilde{x}_0$ und $\tilde{x}_1$, demnach sind die 3-Tupel überlappend.
+
+Im folgenden Kapitel werden die Tupel benutzt, um die Daten zu visualisieren. Dabei gilt immer $k = d$, also disjunkt und lückenlos.
+
+
 
 
 ### Graphische Überprüfung der Gleichverteilung
