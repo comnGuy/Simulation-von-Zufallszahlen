@@ -552,6 +552,23 @@ ggplot(data, aes(y = data, x = pos)) +
   labs(title = "Plot",
   x = "Zufallszahlen",
   y = "Spannweite des Zufallsgenerators")
+
+
+library(scatterplot3d)
+
+with(datawh, {
+   s3d <- scatterplot3d(dataX, dataY, dataZ, # x,y, z axis
+                 main="PP-Coincidence",
+                 box=FALSE,
+                 color="#619CFF",
+                 pch = 16,
+                 xlab="",
+                 ylab="",
+                 zlab="")
+   
+   s3d.coords <- s3d$xyz.convert(dataX, dataY, dataZ) +
+  theme(plot.title = element_text(hjust = 0.5))
+})
 ```
 
 
