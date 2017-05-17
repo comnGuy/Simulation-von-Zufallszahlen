@@ -49,7 +49,7 @@ Hierzu wird oft Hardware verwendet, die durch Sensoren physikalische Effekte mes
 
 * Radioaktiver Zerfall
 * Wärmerauschen
-* zufällige quantenmechanische Vorgänge
+* Zufällige quantenmechanische Vorgänge
 * Atmosphärenrauschen (wie analoges Radio, das nicht auf einen Sender abgestimmt ist)
 
 \begin{figure}[ht]
@@ -548,3 +548,5 @@ ggplot(data, aes(y = data, x = pos)) +
 [6] \textbf{D. E. Knuth}, The Art of Computer Programming, Volume 2: Seminumerical Algorithms
 
 [7] \textbf{Zivi Gutterman, Benny Pinkas, Tzachy Reinman}, Analysis of the Linux Random Number Generator, http://www.codeplanet.eu/files/download/Analysis%20of%20the%20Linux%20Random%20Number%20Generator.pdf
+
+[8] \textbf{David Wong}, How does the Mersenne's Twister work?, https://www.cryptologie.net/article/331/how-does-the-mersennes-twister-work/, Feb. 2016
