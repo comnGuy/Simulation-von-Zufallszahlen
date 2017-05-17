@@ -99,7 +99,30 @@ Bemerkungen:
 ### Mersenne-Twister
 Der Mersenne-Twister wurde 1997 von Makoto Matsumoto und Takuji Nishimura im Jahr 1997 entwickelt und ist eine Weiterentwicklung des TGFSR (Twisted The Generalized Feedback Shift Register). Der Generator gilt als quasi-Standard für moderne Pseudozufallszahlengeneratoren und wird in zahlreichen Programmiersprachen und Softwareanwendungen verwendet. Er wurde mit einer sehr langen Periodenlänge von $p = 2^{19937} - 1$ erweitert, die eine Mersenne-Primzahl ist. Weiterhin zählt der Mersenne-Twister zu den gleichverteilten Pseudozufallszahlengeneratoren.
 
-Der \textbf{Algorithmus} startet, indem er mit einem Seed $n$ verschiedene binäre Wörter $x_1,\ ...\ , x_n$ mit jeweils $w$ Bit generiert. Die Initialwörter können von einem anderen Pseudozufallszahlengenerator stammen. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. Zusätzlich müssen beim Start des Algorithmus mehrere Bitmasken für binäre Operationen definiert werden. Nach der Initialisierung, berechnet der Mersenne-Twister den nächsten Zustand.
+Durch seine Entwicklung als Feedback Shift Register, arbeitet der Algorithmus mit langen Binärzahlen, die in Registern entsprechend hin- und hergeschoben (geshiftet) werden. Bevor der Mersenne-Twister startet, müssen die Parameter 
+$$
+w:= \text{Größe eines Wortes (in Bit)}
+$$
+$$
+n:= \text{Anzahl der Rekursionen}
+$$
+$$
+b, c:= \text{Bitmasken für Tempering}
+$$
+$$
+s, t, u, l:= \text{Bit Shifts für Tempering}
+$$
+
+gesetzt werden. Mit dem Seed $n$ werden verschiedene binäre Wörter $x_1,\ ...\ , x_n$ mit jeweils $w$ Bit generiert. Diese Initialwörter können von einem anderen Pseudozufallszahlengenerator stammen. Hierbei muss drauf geachtet werden, dass nicht zu viele Wörter mit 0 initialisiert werden. 
+
+Nach der Initialisierung, beginnt der Twister seine beiden zwei Operationen \emph{twist} und \emph{temper} hintereinander auszuführen.
+
+\begin{figure}[ht]
+	\centering
+  \includegraphics[width=300px, height=300px]{img/MT-Schema.jpg}
+	\caption {Schema des Mersenne-Twisters.}
+	\label{fig2}
+\end{figure}
 
 Die \textbf{twist}-Funktion wird hierzu rekursiv als
 $$x_{k+n}:=x_{k+m}\oplus((x_{k}^u || x_{k+1}^l)A)$$
